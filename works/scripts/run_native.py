@@ -88,6 +88,12 @@ def main(argv=None):
 
                 report = summarize(junit)
                 report.update(client=args.client, suite=args.suite, exit=int(result))
+                manifest = json.loads(args.manifest.read_text())
+                pin = manifest["clients"][args.client]
+                report["pin"] = {key: pin[key] for key in ("version", "sha256", "lock_sha256")}
+                report["node"] = {
+                    key: manifest["node"][key] for key in ("version", "sha256", "archive_sha256")
+                }
                 args.report.parent.mkdir(parents=True, exist_ok=True)
                 args.report.write_text(json.dumps(report, indent=2) + "\n")
             return result

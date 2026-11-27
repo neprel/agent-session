@@ -35,6 +35,16 @@ def test_os_confinement_is_explicit_and_never_falls_back_to_unconfined():
             confinement_command(platform, command, {})
 
 
+def test_hosted_privileged_namespaces_are_explicit_and_require_noninteractive_sudo():
+    command = confinement_command(
+        "linux", ["/python"], {"sudo": "/sudo", "unshare": "/unshare"}, linux_sudo=True
+    )
+    assert command[:5] == ["/sudo", "--non-interactive", "--", "/unshare", "--net"]
+    assert "--kill-child" in command and "--pid" in command
+    with pytest.raises(IsolationUnavailable):
+        confinement_command("linux", ["/python"], {"unshare": "/unshare"}, linux_sudo=True)
+
+
 @pytest.mark.parametrize(
     "trace",
     [

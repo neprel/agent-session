@@ -84,7 +84,9 @@ def client_executable(root: Path, client: str, platform: str) -> Path:
     relative = {
         "codex": "@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex",
         "opencode": "@opencode/cli-linux-x64/bin/opencode",
-        "claude": ".bin/claude",
+        # The top-level npm bin points to a Windows stub until postinstall.
+        # Select the integrity-locked Linux optional package without hooks.
+        "claude": "@anthropic-ai/claude-code-linux-x64/claude",
         "pi": ".bin/pi",
     }[client]
     return root / "node_modules" / relative

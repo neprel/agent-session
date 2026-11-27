@@ -20,6 +20,12 @@ from tests.support.provisioning import (
 pytestmark = pytest.mark.unit
 
 
+def test_claude_uses_verified_linux_package_without_windows_postinstall_stub(tmp_path):
+    assert client_executable(tmp_path, "claude", "linux") == (
+        tmp_path / "node_modules/@anthropic-ai/claude-code-linux-x64/claude"
+    )
+
+
 @pytest.mark.parametrize("client", CLIENTS)
 def test_integrity_locks_pin_exact_client_and_every_download(client):
     lock = json.loads((Path(__file__).parents[1] / "native/locks" / f"{client}.json").read_text())
