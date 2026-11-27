@@ -15,10 +15,9 @@ Product source/tests/docs/scripts/config live in works/. Run product commands th
 ## Next work
 
 1. Complete and independently review AS-019.
-2. Resume AS-003, then eligible AS-004/AS-005/AS-008.
-3. Continue AS-006/AS-007/AS-009/AS-010 as dependencies are accepted.
-4. Implement AS-011 through AS-014 with pinned native evidence.
-5. Complete AS-015 and remaining AS-018 gates, then AS-016.
+2. All agents write relative-path handoffs and stop. The owner will rename the physical project folder.
+3. Resume only after the owner supplies the new folder and says to continue. AS-003 is next; AS-018 remains open for its native gates.
+4. Then follow the existing dependency graph through AS-016.
 
 A dependency is satisfied only in done/. Keep one developer implementation at a time in this checkout. Concurrent review tests require an isolated exact-revision checkout. Wake idle agents through native Codex messaging when eligible work exists.
 
@@ -40,3 +39,7 @@ Manager thread: 01a21c90-df87-74d2-9c7a-987776f2c652.
 Developer thread: 01a21c90-ef19-7612-a747-b9520f062deb.
 Reviewer thread: 01a21c91-08df-7840-9f1c-123aca6c8794.
 Both native round trips and launch identities were verified. Initial tmux bootstrap was owner-authorized; all later coordination uses native messaging. No additional agents or threads.
+
+## Owner pause after rename
+
+The owner ordered all agents to stop with handoffs after the complete rename. Do not resume AS-003 or other work at rename completion. Each agent writes agents/{role}/1/HANDOFF.md, preserves task state/evidence and awaits the new folder/continuation instruction. Use relative workspace paths in handoffs. Historical records/upstream evidence remain intact as previously required.

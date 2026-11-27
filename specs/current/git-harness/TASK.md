@@ -74,4 +74,4 @@ Verify native contracts first. Define both common interfaces and all ten command
 
 Implement AS-017 immediately after AS-002. Run AS-018 as soon as the test foundation is available; complete its native matrix as adapters become available. AS-016 requires AS-015 and AS-018. Do not publish during implementation.
 
-Owner ordered AS-019 before resuming AS-003. Existing task IDs and dependency metadata are unchanged. AS-018 remains open for its full native gates.
+Owner ordered AS-019 before resuming AS-003. After rename acceptance, all agents stop with handoffs for the owner's physical folder rename. Resume only on owner instruction. Existing task IDs and dependency metadata are unchanged. AS-018 remains open for its full native gates.
