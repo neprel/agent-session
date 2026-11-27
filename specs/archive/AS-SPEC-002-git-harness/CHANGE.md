@@ -1,6 +1,6 @@
 # AS-SPEC-002: Git Harness
 
-Status: owner approved on 2026-11-27; implementation and independent review pending.
+Status: completed on 2026-11-27; owner approved; AS-019 independently accepted.
 Related task: AS-019.
 
 Use Git Harness as the product; git-harness as repository, distribution and executable; git_harness as Python package; and git harness through native Git external command discovery. The default registration directory is .harness; agent.json stays unchanged. Public variables are GIT_HARNESS_DIR, GIT_HARNESS_FILE and GIT_HARNESS_HISTORY_MAX_SIZE. Preserve other behavior/defaults. Add no compatibility aliases, legacy configuration names, Git aliases or wrapper scripts. The utility must work outside a Git repository.
@@ -21,4 +21,4 @@ The owner freed the GitHub target name. Manager verified target HTTP 404, rename
 
 ## Independent review
 
-Pending reviewer/1 after AS-019 submission.
+Accepted by reviewer/1 with AS-019 at 21594a2. Reviewed product 2e4d2c8 and final correction 3741287 plus manager specification/task/instruction/repository changes. Evidence: probes/AS-019/review.md. All related rename work is accepted; current requirements remain in specs/current/git-harness/.

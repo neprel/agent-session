@@ -4,9 +4,9 @@ Manager: manager/1. Updated: 2026-11-27.
 
 ## Current work
 
-AS-001, AS-002 and AS-017 are independently accepted in tasks/done/developer/. AS-018 remains assigned to developer/1; hosted portable and Linux native foundation checks pass, while full native acceptance remains pending. AS-003 is assigned but paused until the owner-approved AS-019 rename is independently accepted. Reviewer is reviewer/1.
+AS-001, AS-002, AS-017 and AS-019 are independently accepted in tasks/done/developer/. AS-018 remains assigned to developer/1; hosted portable and Linux native foundation checks pass, while full native acceptance remains pending. AS-003 is assigned and paused until the owner supplies the renamed physical folder and says to continue. Reviewer is reviewer/1.
 
-Approved requirements: specs/current/git-harness/. Complete rename: specs/changes/AS-SPEC-002-git-harness/CHANGE.md. AS-019 has priority; existing task IDs, dependencies and review histories remain unchanged. The reviewed earlier naming proposal is superseded and archived.
+Approved requirements: specs/current/git-harness/. Completed rename record: specs/archive/AS-SPEC-002-git-harness/CHANGE.md. AS-019 is accepted at 21594a2; existing task IDs, dependencies and review histories remain unchanged. The reviewed earlier naming proposal is superseded and archived.
 
 ## Workspace and evidence
 
@@ -14,7 +14,7 @@ Product source/tests/docs/scripts/config live in works/. Run product commands th
 
 ## Next work
 
-1. Complete and independently review AS-019.
+1. AS-019 is completed and independently accepted.
 2. All agents write relative-path handoffs and stop. The owner will rename the physical project folder.
 3. Resume only after the owner supplies the new folder and says to continue. AS-003 is next; AS-018 remains open for its native gates.
 4. Then follow the existing dependency graph through AS-016.
@@ -43,3 +43,11 @@ Both native round trips and launch identities were verified. Initial tmux bootst
 ## Owner pause after rename
 
 The owner ordered all agents to stop with handoffs after the complete rename. Do not resume AS-003 or other work at rename completion. Each agent writes agents/{role}/1/HANDOFF.md, preserves task state/evidence and awaits the new folder/continuation instruction. Use relative workspace paths in handoffs. Historical records/upstream evidence remain intact as previously required.
+
+## Final rename verification
+
+Product 2e4d2c8 and final correction 3741287 accepted by reviewer/1 at 21594a2. Independent 308 portable tests and 23 install/native Git checks passed. Final manual Release 45998800861 and PR Release 45998807187 passed; publication skipped. Exact CI 45998807121 passes all infrastructure jobs and fails only the four intentionally missing native acceptance gates (AS-018). Hosted proof: probes/AS-019/hosted-verification.json; independent review: probes/AS-019/review.md. No further implementation before owner continuation.
+
+## Stop handoffs
+
+Reviewer and developer reported STOPPED after AS-019 acceptance. Handoffs: agents/reviewer/1/HANDOFF.md, agents/developer/1/HANDOFF.md and agents/manager/1/HANDOFF.md. Manager stops after recording this handoff. No further implementation or review until the owner provides the renamed folder and continuation. Preserve the owner root LICENSE modification.
