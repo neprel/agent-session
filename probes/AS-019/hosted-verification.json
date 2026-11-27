@@ -1,0 +1,344 @@
+{
+  "runs": [
+    {
+      "id": 45998807187,
+      "html_url": "https://github.com/neprel/git-harness/actions/runs/45998807187",
+      "head_sha": "3741287d38aabd4ac0d13a4c151825f96ec35221",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "identity",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / ubuntu-latest Python 3.11",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / workflow-lint",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / macos-latest Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation claude",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation opencode",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation codex",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / ubuntu-latest Python 3.13",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / ubuntu-latest Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / macos-latest Python 3.11",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation pi",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / macos-latest Python 3.13",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-acceptance",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "build",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "publish",
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ]
+    },
+    {
+      "id": 45998807121,
+      "html_url": "https://github.com/neprel/git-harness/actions/runs/45998807121",
+      "head_sha": "3741287d38aabd4ac0d13a4c151825f96ec35221",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "failure",
+      "jobs": [
+        {
+          "name": "Required native acceptance opencode",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "name": "Required native acceptance claude",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "name": "portable / macos-latest Python 3.11",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation codex",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Required native acceptance pi",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "name": "Required native acceptance codex",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "name": "portable / workflow-lint",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation pi",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / ubuntu-latest Python 3.13",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / ubuntu-latest Python 3.11",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / ubuntu-latest Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / macos-latest Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation claude",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation opencode",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / macos-latest Python 3.13",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 45998469282,
+      "html_url": "https://github.com/neprel/git-harness/actions/runs/45998469282",
+      "head_sha": "2e4d2c8e7724081041638b4502353084e82d27f9",
+      "event": "workflow_dispatch",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "identity",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation pi",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation codex",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / ubuntu-latest Python 3.13",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / workflow-lint",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation claude",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / ubuntu-latest Python 3.11",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / macos-latest Python 3.11",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / macos-latest Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / macos-latest Python 3.13",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / ubuntu-latest Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-acceptance",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "native-foundation / Native foundation opencode",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "build",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "publish",
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ]
+    },
+    {
+      "id": 45998800861,
+      "html_url": "https://github.com/neprel/git-harness/actions/runs/45998800861",
+      "head_sha": "3741287d38aabd4ac0d13a4c151825f96ec35221",
+      "event": "workflow_dispatch",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "identity",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation codex",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation claude",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / ubuntu-latest Python 3.11",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation pi",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / macos-latest Python 3.11",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / macos-latest Python 3.13",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / ubuntu-latest Python 3.13",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-foundation / Native foundation opencode",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / workflow-lint",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / macos-latest Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "portable / ubuntu-latest Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "native-acceptance",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "build",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "publish",
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ]
+    }
+  ]
+}

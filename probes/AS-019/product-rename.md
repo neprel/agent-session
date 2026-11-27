@@ -23,3 +23,14 @@ Hosted results and exact source commit will be appended after branch publication
 ## Owner audit follow-up
 
 The owner requested removal of former-name literals even from maintained negative assertions. The distribution verifier now checks the exact wheel package set and exact current console entry point. The environment test now uses unrelated unknown variables. Historical evidence above describes the original verification and is preserved. Re-audit of maintained product/workflows finds no former project-name tokens; legitimate session model attributes and upstream license names remain. Updated local tests and installed artifact checks are recorded with the follow-up commit.
+
+## Final hosted verification
+
+Final audit correction commit: `3741287d38aabd4ac0d13a4c151825f96ec35221`. Local 308 tests/Ruff and 23 artifact checks passed again. Maintained product/workflows audit has no former product-name matches.
+
+- Manual Release https://github.com/neprel/git-harness/actions/runs/45998800861: SUCCESS. All six Linux/macOS Python3.11–3.13 portable jobs, lint, all four audited Linux native foundation jobs, release identity and distribution build/verification passed. Publish and tag-only native acceptance skipped.
+- PR Release https://github.com/neprel/git-harness/actions/runs/45998807187: SUCCESS, same build-only path, publish skipped.
+- PR CI https://github.com/neprel/git-harness/actions/runs/45998807121: FAILURE only at four explicit missing native acceptance gates. All portable/lint/native foundation jobs passed; this is the existing AS-018 incompleteness, not claimed acceptance.
+- Earlier renamed manual Release45998469282 and PR Release45998464941 at2e4d2c8 also succeeded; manual CI45998463913 passed all infrastructure jobs and failed only missing native acceptance. Superseded PR CI45998464907 cancelled on metadata push, not a passing proof.
+
+Compact exact-commit/job evidence: hosted-verification.json. Current branch work/git-harness-implementation; draft PR https://github.com/neprel/git-harness/pull/2. Historical branch/PR preserved; no merge, tag, publication or settings changes by developer.
