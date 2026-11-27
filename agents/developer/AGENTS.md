@@ -37,3 +37,5 @@ Return the task to its original reviewer.
 - Continue until no actionable work remains.
 - Store investigation artifacts in `probes/{task-id}/`.
 - Link probe findings from the task. Do not repeat them.
+- Implement product changes in `works/`.
+- Execute product development, test and build commands from `works/`.

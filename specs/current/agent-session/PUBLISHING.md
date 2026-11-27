@@ -1,6 +1,6 @@
 # Owner guide: GitHub Actions and PyPI
 
-This guide applies after AS-018 implements the workflows and AS-016 verifies the release candidate. Do not publish until the owner approves. Use the actual GitHub repository owner and repository name. No PyPI API token is necessary.
+This guide applies after AS-018 implements the workflows and AS-016 verifies the release candidate. Do not publish until the owner approves. Use the actual GitHub repository owner and repository name. No PyPI API token is necessary. Workflow files stay in `.github/workflows/`; product build and test steps run from `works/`.
 
 ## 1. GitHub repository
 
@@ -27,7 +27,7 @@ Select Add. Make sure the values match the workflow exactly. A pending publisher
 
 ## 3. First release and subsequent releases
 
-1. Verify the release commit, test reports, compatibility claims, license notices and package version in pyproject.toml.
+1. Verify the release commit, test reports, compatibility claims, license notices and package version in `works/pyproject.toml`.
 2. Confirm that the commit is on the protected default branch. Obtain owner approval before creating a tag.
 3. For version 0.1.0, the owner (or an explicitly authorized release operator) can run:
 

@@ -4,14 +4,18 @@ agent-session is a deterministic CLI for managing and communicating with coding 
 
 ## Workspace
 
-- `specs/`: current specifications, proposed changes and archived changes.
-- `tasks/`: planned, assigned, submitted and completed work.
 - `agents/`: agent roles and instances.
-- `src/`: product source code.
-- `tests/`: product tests.
+- `specs/`: current specifications, proposed changes and archived changes.
+- `tasks/`: work items, assignments and review records.
 - `probes/`: investigations, experiments, prototypes and supporting evidence.
+- `works/`: product source code, tests, documentation and build configuration.
+- `.github/workflows/`: CI and release workflows.
 
 All paths in instructions and task documents are relative to the repository root unless specified otherwise.
+
+Keep product implementation files in `works/`. Execute product development, test and build commands from `works/`.
+
+Keep agents, specifications, tasks and probes outside `works/`. Keep `.github/workflows/` at the repository root. Do not create a Git repository in `works/`.
 
 ## Team
 
@@ -72,7 +76,7 @@ Return rejected work to its original executor. Return corrected work to its orig
 - Keep task documents concise. Link probe findings; do not repeat them.
 - Do not treat experimental code as product code.
 - Do not store credentials or sensitive session data.
-- Move reusable tests to `tests/` when appropriate.
+- Move reusable tests to `works/tests/` when appropriate.
 
 ## Execution
 

@@ -45,3 +45,6 @@ Continue with the next available review.
 - Continue until no actionable reviews remain.
 - Verify referenced probe evidence.
 - Reproduce experiments when necessary.
+- Inspect product implementation in `works/`.
+- Execute product verification commands from `works/`.
+- Execute product checks from `works/`.

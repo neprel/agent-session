@@ -68,4 +68,8 @@ Approved specifications permit exact tested version support. Do not widen compat
 
 ## Probe traceability
 
-Owner updated workspace instructions during AS-002: investigations belong in probes/{task-id}/. Manager notified both agents and relocated AS-001 artifacts to probes/AS-001 with task links and original acceptance preserved. Reusable tests belong in tests/.
+Owner updated workspace instructions during AS-002: investigations belong in probes/{task-id}/. Manager notified both agents and relocated AS-001 artifacts to probes/AS-001 with task links and original acceptance preserved. Reusable tests belong in works/tests/.
+
+## Product root
+
+Owner approved the works/ layout and corresponding current-specification path edits on 2026-11-27. Product source, tests, documentation, scripts and package/build configuration belong in works/. Run product commands there. Root .github/workflows/ runs steps in works/ and uses works/dist/. Keep agents/specs/tasks/probes outside; no nested Git. Developer coordinates active AS-002 product moves. Task metadata and review history remain unchanged.

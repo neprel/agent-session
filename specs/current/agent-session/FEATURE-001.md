@@ -2,7 +2,7 @@
 
 ## R1 - Runtime
 
-Use Python >=3.11, uv, pyproject.toml and a src layout. Distribution and executable: `agent-session`; import package: `agent_session`. Provide a console entry point and `python -m agent_session`. Use watchdog, croniter, unique-namer and psutil. Use the standard library for other operations unless a new dependency is approved. Use session-migrate source as a reference, not a required runtime dependency by default. Keep uv.lock for reproducible development. Use a standard PEP 517 build backend. Build a wheel and source distribution.
+Use Python >=3.11, uv, `works/pyproject.toml` and a `works/src/` layout. Distribution and executable: `agent-session`; import package: `agent_session`. Provide a console entry point and `python -m agent_session`. Use watchdog, croniter, unique-namer and psutil. Use the standard library for other operations unless a new dependency is approved. Use session-migrate source as a reference, not a required runtime dependency by default. Keep `works/uv.lock` for reproducible development. Use a standard PEP 517 build backend. Build a wheel and source distribution.
 
 ## R2 - CLI contract
 
@@ -29,7 +29,7 @@ Exit 0: operation succeeded, no change necessary, or identical trigger already r
 
 ## R4 - Distribution checks
 
-`uv sync --dev`, `uv run pytest`, `uv build` MUST work. Test install from the built wheel in an isolated environment. Verify `uvx` invocation from a local wheel or test index. Do not publish until the owner approves. Verify distribution name availability before release; do not silently rename.
+From `works/`, `uv sync --dev`, `uv run pytest`, `uv build` MUST work. Test install from the built wheel in an isolated environment. Verify `uvx` invocation from a local wheel or test index. Do not publish until the owner approves. Verify distribution name availability before release; do not silently rename.
 ## R5 - Command interface
 
 Each of the ten commands MUST implement the same typed Command protocol in commands/base.py. Use these members:
