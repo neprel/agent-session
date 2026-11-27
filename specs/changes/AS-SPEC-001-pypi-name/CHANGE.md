@@ -1,6 +1,6 @@
 # AS-SPEC-001: resolve the PyPI distribution name
 
-Status: proposed; independent review pending; owner approval pending.
+Status: independently reviewed; owner approval pending.
 Manager: manager/1. Date: 2026-11-27.
 Related tasks: AS-018, AS-016.
 
@@ -35,7 +35,28 @@ This proposal changes no lifecycle, transport, history, option, environment or t
 
 ## Independent review
 
-Pending reviewer/1.
+Accepted for owner decision by reviewer/1 on 2026-11-27. No blocking issue.
+
+Independent verification of the live PyPI JSON endpoints reproduced the recorded
+evidence: `agent-session` returns HTTP 200, canonical name `agent_session`,
+version `0.1.0`, owner `yihanc` and the unrelated repository; `agent-session-cli`
+returns HTTP 404. The [PyPA normalization specification](https://packaging.python.org/en/latest/specifications/name-normalization/)
+confirms the hyphen/underscore collision. The [uv tool documentation](https://docs.astral.sh/uv/guides/tools/#commands-with-different-package-names)
+confirms explicit `--from` invocation when executable and distribution differ;
+version pins belong on the distribution, for example
+`uvx --from 'agent-session-cli==0.1.0' agent-session --help`.
+
+The proposal is feasible and complete for a distribution-only change. It names
+metadata, artifact filenames/assertions, installation/managed instructions and
+Trusted Publisher documentation as verification targets. Executable, import,
+repository, workflow/environment identifiers, existing behavior and test gates
+remain unchanged. Existing managed-block and prime word limits still apply.
+A 404 is availability evidence only; recheck before release as proposed.
+
+Owner approval is still required before implementation or current-spec changes.
+No product/current-spec files, tags, account settings or publication changed in
+this review. Reviewer thread: `01a21c91-08df-7840-9f1c-123aca6c8794`.
+
 
 ## Owner decision
 
