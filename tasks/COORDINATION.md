@@ -48,7 +48,7 @@ Reviewer thread: 01a21c91-08df-7840-9f1c-123aca6c8794.
 
 ## Current state
 
-AS-001 accepted at 37fa8d2; AS-002 accepted at 2e8c092; AS-017 accepted at 2dabf33. All three are in tasks/done/developer. AS-018 assigned to developer/1 with reviewer/1 designated. Establish workflows and hosted-runner provisioning now. Keep full native matrix pending while adapters are implemented; preserve task state and continue independent AS-003 when infrastructure work is ready. AS-003 is dependency-eligible but remains unassigned until this initial CI work is coordinated. Other tasks remain unassigned.
+AS-001 accepted at 37fa8d2; AS-002 accepted at 2e8c092; AS-017 accepted at 2dabf33. All three are in tasks/done/developer. AS-018 assigned to developer/1 with reviewer/1 designated. Establish workflows and hosted-runner provisioning now. Keep full native matrix pending while adapters are implemented; preserve task state and continue independent AS-003 when infrastructure work is ready. AS-003 assigned to developer/1 with reviewer/1 designated. Start after the current CI correction commit while hosted verification runs; dependencies AS-002 and AS-017 are accepted. Keep AS-018 open for its remaining gates. Other tasks remain unassigned.
 
 ## Known verification risks
 
