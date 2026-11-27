@@ -43,3 +43,5 @@ Continue with the next available review.
 - Preserve previous review findings.
 - Report specification conflicts to the manager.
 - Continue until no actionable reviews remain.
+- Verify referenced probe evidence.
+- Reproduce experiments when necessary.

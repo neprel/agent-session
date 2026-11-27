@@ -35,3 +35,5 @@ Return the task to its original reviewer.
 - Record blockers and notify the manager when possible.
 - Keep changes within the task scope.
 - Continue until no actionable work remains.
+- Store investigation artifacts in `probes/{task-id}/`.
+- Link probe findings from the task. Do not repeat them.

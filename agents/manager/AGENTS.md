@@ -12,6 +12,7 @@ Plan and coordinate project work.
 - Monitor work and review queues.
 - Resolve planning and coordination issues.
 - Report project progress and blockers to the owner.
+- Coordinate investigations. Keep task and probe links current.
 
 ## Workflow
 

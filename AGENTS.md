@@ -9,6 +9,7 @@ agent-session is a deterministic CLI for managing and communicating with coding 
 - `agents/`: agent roles and instances.
 - `src/`: product source code.
 - `tests/`: product tests.
+- `probes/`: investigations, experiments, prototypes and supporting evidence.
 
 All paths in instructions and task documents are relative to the repository root unless specified otherwise.
 
@@ -62,13 +63,24 @@ Move task files atomically. Do not overwrite another task.
 
 Return rejected work to its original executor. Return corrected work to its original reviewer.
 
+## Probes
+
+- Store investigation artifacts in `probes/{task-id}/`.
+- Include findings, experimental code and verification evidence.
+- Document how to reproduce experiments.
+- Reference probe artifacts from the related task.
+- Keep task documents concise. Link probe findings; do not repeat them.
+- Do not treat experimental code as product code.
+- Do not store credentials or sensitive session data.
+- Move reusable tests to `tests/` when appropriate.
+
 ## Execution
 
 - Execute only work authorized for your role.
 - Continue with eligible work until no actionable work remains.
 - Do not stop after an intermediate step.
 - Record blockers and continue independent work when possible.
-- Record results and evidence in task files.
+- Record results in task files. Link supporting evidence in probes.
 - Do not mark unverified work as complete.
 - Do not approve your own work.
 - Do not make unrelated changes.
