@@ -10,4 +10,3 @@ Record exact tested harness version, OS, supported features, commands and reprod
 ## R3 - Package boundary
 
 Implement the common Harness interface in harnesses/pi/adapter.py. Keep native discovery, probe, launch, delivery, history read/write and configuration inside this package. Include extension.ts and any required harness-specific helper resources in the same package. Use the common portable event model. Do not modify the common services to handle this harness. Verify that the wheel contains the resources and the configure method installs them at the native paths specified above.
-
