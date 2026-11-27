@@ -33,6 +33,7 @@ def main():
     (sdist,) = (product / "dist").glob("*.tar.gz")
     with zipfile.ZipFile(wheel) as archive:
         names = archive.namelist()
+        assert {n.split("/")[0] for n in names if ".dist-info/" not in n} == {"git_harness"}
         metadata = Parser().parsestr(
             archive.read(next(n for n in names if n.endswith("/METADATA"))).decode()
         )
@@ -100,7 +101,6 @@ def main():
             assert run([str(bin_dir / "git-harness"), "--version"]).strip() == expected
             assert run([git, "harness", "--version"]).strip() == expected
             assert "watcher" in run([git, "harness", "-h"])
-            assert not (bin_dir / "agent-session").exists()
 
         for label, artifact in (("wheel", wheel), ("sdist", sdist)):
             venv = root / label
@@ -118,8 +118,7 @@ def main():
                     "\n".join(
                         [
                             "from pathlib import Path",
-                            "from importlib import resources, metadata, util",
-                            "assert util.find_spec('agent_session') is None",
+                            "from importlib import resources, metadata",
                             "scripts = metadata.distribution('git-harness').entry_points",
                             "assert [(s.name, s.value) for s in scripts "
                             "if s.group == 'console_scripts'] == "

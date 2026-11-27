@@ -19,3 +19,7 @@ Audited `works/src`, tests, scripts, docs, README, publishing guide, metadata/lo
 The old occupied-name release blocker was removed after owner approval. Native acceptance and owner-controlled release safeguards still fail closed; no tags, packages or account settings were changed. Read-only https://pypi.org/pypi/git-harness/json returned HTTP 404 on 2026-11-27 (not a reservation). Repository identity evidence is manager-owned repository-rename.json.
 
 Hosted results and exact source commit will be appended after branch publication. AS-003 remains paused; owner requires handoff and stop after AS-019 acceptance.
+
+## Owner audit follow-up
+
+The owner requested removal of former-name literals even from maintained negative assertions. The distribution verifier now checks the exact wheel package set and exact current console entry point. The environment test now uses unrelated unknown variables. Historical evidence above describes the original verification and is preserved. Re-audit of maintained product/workflows finds no former project-name tokens; legitimate session model attributes and upstream license names remain. Updated local tests and installed artifact checks are recorded with the follow-up commit.

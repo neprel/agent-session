@@ -55,12 +55,12 @@ def test_size_invalid(value):
         size_bytes(value)
 
 
-def test_legacy_environment_has_no_effect():
+def test_unrelated_environment_has_no_effect():
     assert Environment.from_environ(
         {
-            "AGENT_SESSION_DIR": "legacy",
-            "AGENT_SESSION_FILE": "old.json",
-            "AGENT_SESSION_HISTORY_MAX_SIZE": "1M",
+            "UNRELATED_DIR": "unrelated",
+            "UNRELATED_FILE": "unrelated.json",
+            "UNRELATED_HISTORY_MAX_SIZE": "1M",
         }
     ) == Environment(".harness", "agent.json", 262144)
 
