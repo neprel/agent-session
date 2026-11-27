@@ -16,8 +16,9 @@ uv sync --locked --dev
 uv run --locked agent-session --help
 uv run --locked python -m agent_session watcher --help
 uv run --locked pytest
-uv run --locked ruff check src tests
+uv run --locked ruff check src tests scripts
 uv build
+uv run --locked python scripts/verify_distribution.py
 uvx --from ./dist/agent_session-0.1.0-py3-none-any.whl agent-session --version
 ```
 
@@ -49,3 +50,11 @@ Transport acceptance does not prove that a receiving agent processed a message.
 See [interfaces](docs/interfaces.md), [testing](docs/testing.md) and
 [third-party notices](THIRD_PARTY_NOTICES.md). Portable model adaptation retains
 session-migrate's MIT notice; native converters are not runtime dependencies.
+
+The repository-only test foundation supplies synthetic native histories,
+fake time/executables/processes and a deterministic loopback protocol provider.
+Tests, provider, provisioning scripts and native locks are excluded from both
+wheel and sdist. The explicit native entry point fails closed on missing
+isolation or prerequisites; see the testing guide for candidate pins and the
+current macOS/Linux verification limits. No native support claim follows from
+the portable suite or a version-only gate.

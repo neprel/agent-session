@@ -1,0 +1,5 @@
+[
+  "tests/fixtures/claude-2.1.209/basic.jsonl",
+  "tests/fixtures/codex-0.144.4/basic.jsonl",
+  "tests/fixtures/pi-0.80.6/basic.jsonl"
+]

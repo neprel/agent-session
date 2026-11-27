@@ -10,6 +10,13 @@ cursor/projection values, and omission of raw reasoning/context/opaque payloads.
 The native converters and offline provider have not yet been copied into the
 runtime package. The upstream license for the adapted model follows.
 
+Repository-only `tests/support/offline_provider.py`, native provisioning pin/path
+choices and the synthetic fixtures also adapt reviewed session-migrate test
+material at that revision. Their complete license is retained in
+`tests/support/LICENSE.session-migrate`; these test artifacts are excluded from
+both product distributions. Provider changes include strict bounded requests,
+Messages query handling, scripted tool/error responses and removal of Gemini.
+
 MIT License
 
 Copyright (c) 2026 xhluca

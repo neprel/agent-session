@@ -1,0 +1,60 @@
+{
+  "date": "2026-11-27",
+  "platform": "Darwin 24.6.0 arm64",
+  "portable": {
+    "passed": 294,
+    "skipped": 0,
+    "native_deselected": 1,
+    "combined_product_coverage_percent": 99.72,
+    "product_branches_covered": 34
+  },
+  "provider_followup": {
+    "passed": 31
+  },
+  "distribution": {
+    "checks": 15,
+    "result": "passed",
+    "test_support_excluded": [
+      "wheel",
+      "sdist"
+    ]
+  },
+  "isolation_only": {
+    "exit": 0,
+    "loopback": "connected",
+    "child_denials": {
+      "ipv4": "EPERM",
+      "ipv6": "EPERM",
+      "dns": "EPERM"
+    }
+  },
+  "native_client_entry": {
+    "exit": 4,
+    "expected": true,
+    "client_launched": false,
+    "reason": "macOS audited client execution unavailable"
+  },
+  "node_prerequisite": {
+    "version": "22.19.0",
+    "archive_sha256": "c59006db713c770d6ec63ae16cb3edc11f49ee093b5c415d667bb4f436c6526d",
+    "executable_sha256": "0d005c18e095027ca8f9fe1cc1126f767ee4ad7b004f4d6fb781ec4228a7c5d1",
+    "verified": "download/checksum/extraction and pinned Node/npm lock generation"
+  },
+  "unverified": [
+    "Linux namespace execution",
+    "Linux native npm installation",
+    "Audited native client execution",
+    "Native adapter/resume/all-route acceptance"
+  ],
+  "artifacts_sha256": {
+    ".gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+    "agent_session-0.1.0-py3-none-any.whl": "e2cd1b5b9ced0eecbd9970138658a225e781e50610be42aaccedded4bdb12bc4",
+    "agent_session-0.1.0.tar.gz": "70721657f663cb13d5d879bdfd1b827b2d86d1807c0fa6837e6f18cf26806719"
+  },
+  "native_lock_sha256": {
+    "claude.json": "da9e16d05f921537a9421c6e862bc1794646f31353a0543b29ee973603a6a26d",
+    "codex.json": "f86c9f773aa1233b3f356d683c7e0f1f354e997e665876d204ab6ad928e7f020",
+    "opencode.json": "20730ebcfc3faa283cb5e67270e634fab39e82c839f14a257085af80399c6623",
+    "pi.json": "327f1c82a37ec26b3b89ee15a18431e28e5db8011bad9d7b845670e559a9b02d"
+  }
+}
