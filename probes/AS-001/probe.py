@@ -1,6 +1,6 @@
 """AS-001 disposable macOS startup probe; no prompts or inference.
 
-Run with uv run --no-project python tasks/evidence/AS-001/probe.py.
+Run with uv run --no-project python probes/AS-001/probe.py.
 Only reads installed executable code. Never uses the user's harness home.
 """
 

@@ -1,6 +1,6 @@
 """Disposable native CLI discovery/exit checks using a pinned upstream stub.
 
-Usage: uv run --no-project python tasks/evidence/AS-001/offline_smoke.py PROVIDER.py
+Usage: uv run --no-project python probes/AS-001/offline_smoke.py PROVIDER.py
 The provider must be the reviewed session-migrate tests/offline_provider.py.
 This is research evidence, not the AS-017 acceptance suite.
 """

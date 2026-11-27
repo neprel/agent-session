@@ -65,3 +65,7 @@ AS-001 report is authoritative for details. Track the following during downstrea
 | Full native lifecycle ownership, safe tmux prompt states and all 12 resume routes remain unverified | AS-011 through AS-015 |
 
 Approved specifications permit exact tested version support. Do not widen compatibility gates without evidence. Recording research gaps in AS-001 does not waive downstream native release gates.
+
+## Probe traceability
+
+Owner updated workspace instructions during AS-002: investigations belong in probes/{task-id}/. Manager notified both agents and relocated AS-001 artifacts to probes/AS-001 with task links and original acceptance preserved. Reusable tests belong in tests/.

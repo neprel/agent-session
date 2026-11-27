@@ -192,12 +192,12 @@ tests remain mandatory even when a native gate is unavailable.
 Run from repository root (no project runtime exists yet):
 
 ```sh
-uv run --no-project --python 3.12 python tasks/evidence/AS-001/probe.py
+uv run --no-project --python 3.12 python probes/AS-001/probe.py
 curl --fail --location --max-time 30 \
   https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/tests/offline_provider.py \
   -o /tmp/AS001-offline_provider.py
 shasum -a 256 /tmp/AS001-offline_provider.py
-uv run --no-project --python 3.12 python tasks/evidence/AS-001/offline_smoke.py /tmp/AS001-offline_provider.py
+uv run --no-project --python 3.12 python probes/AS-001/offline_smoke.py /tmp/AS001-offline_provider.py
 ```
 
 The probe scripts retain only their own disposable directories, print their
