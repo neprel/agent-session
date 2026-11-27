@@ -48,7 +48,7 @@ Reviewer thread: 01a21c91-08df-7840-9f1c-123aca6c8794.
 
 ## Current state
 
-AS-001 accepted at 37fa8d2; AS-002 accepted at 2e8c092. Both tasks are in tasks/done/developer. AS-017 assigned to developer/1 with reviewer/1 designated. Establish isolated tests and mock-provider protocols before registration. AS-018 follows as soon as this foundation is accepted. Other tasks remain unassigned.
+AS-001 accepted at 37fa8d2; AS-002 accepted at 2e8c092; AS-017 accepted at 2dabf33. All three are in tasks/done/developer. AS-018 assigned to developer/1 with reviewer/1 designated. Establish workflows and hosted-runner provisioning now. Keep full native matrix pending while adapters are implemented; preserve task state and continue independent AS-003 when infrastructure work is ready. AS-003 is dependency-eligible but remains unassigned until this initial CI work is coordinated. Other tasks remain unassigned.
 
 ## Known verification risks
 
@@ -73,3 +73,7 @@ Owner updated workspace instructions during AS-002: investigations belong in pro
 ## Product root
 
 Owner approved the works/ layout and corresponding current-specification path edits on 2026-11-27. Product source, tests, documentation, scripts and package/build configuration belong in works/. Run product commands there. Root .github/workflows/ runs steps in works/ and uses works/dist/. Keep agents/specs/tasks/probes outside; no nested Git. Developer moved active AS-002 source, tests, package configuration, notices and build ignore rules into works/. Product README and LICENSE copies are present; root files remain repository entry points. Manager verified no product source/config remains at root and only the root .git exists. Task metadata and review history remain unchanged.
+
+## Read-only release setup check
+
+On 2026-11-27, GitHub reported zero repository environments, no active rules for main, and no legacy branch protection. Owner setup remains pending: protected main/required CI, pypi environment with owner approval/tag restrictions, and matching PyPI Trusted Publisher. No account settings were changed. Implementation and CI preparation continue; request owner setup only with the concrete release handoff.
