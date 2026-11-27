@@ -2,7 +2,16 @@
 
 ## R1 - Runtime
 
-Use Python >=3.11, uv, `works/pyproject.toml` and a `works/src/` layout. Distribution and executable: `agent-session`; import package: `agent_session`. Provide a console entry point and `python -m agent_session`. Use watchdog, croniter, unique-namer and psutil. Use the standard library for other operations unless a new dependency is approved. Use session-migrate source as a reference, not a required runtime dependency by default. Keep `works/uv.lock` for reproducible development. Use a standard PEP 517 build backend. Build a wheel and source distribution.
+Use Python >=3.11, uv, `works/pyproject.toml` and a `works/src/` layout. Distribution and executable: `git-harness`; import package: `git_harness`. Provide a console entry point and `python -m git_harness`. Use watchdog, croniter, unique-namer and psutil. Use the standard library for other operations unless a new dependency is approved. Use session-migrate source as a reference, not a required runtime dependency by default. Keep `works/uv.lock` for reproducible development. Use a standard PEP 517 build backend. Build a wheel and source distribution.
+
+The console entry point is:
+
+```toml
+[project.scripts]
+git-harness = "git_harness.cli:main"
+```
+
+Support `uvx git-harness`, `uv tool install git-harness`, `git-harness` and `git harness`. Use Git's native external command discovery; add no Git alias or wrapper script. The standalone utility and Git subcommand must work outside Git repositories. Test both from locally built distributions before publication. Do not retain compatibility aliases or legacy configuration names.
 
 ## R2 - CLI contract
 
@@ -100,9 +109,9 @@ These are the only package-defined public environment variables for the initial 
 
 | Variable | Default when unset | Accepted values | Scope |
 |---|---|---|---|
-| AGENT_SESSION_DIR | `.session` | Nonempty single path component; not `.` or `..`; no path separators | Target lookup, init destination, config ignore rules |
-| AGENT_SESSION_FILE | `agent.json` | Nonempty single filename; not `.` or `..`; no path separators | Target lookup and init destination |
-| AGENT_SESSION_HISTORY_MAX_SIZE | `256K` (262144 bytes) | Positive integer bytes or positive integer with K/M binary suffix | History rotation |
+| GIT_HARNESS_DIR | `.harness` | Nonempty single path component; not `.` or `..`; no path separators | Target lookup, init destination, config ignore rules |
+| GIT_HARNESS_FILE | `agent.json` | Nonempty single filename; not `.` or `..`; no path separators | Target lookup and init destination |
+| GIT_HARNESS_HISTORY_MAX_SIZE | `256K` (262144 bytes) | Positive integer bytes or positive integer with K/M binary suffix | History rotation |
 
 Reject empty or invalid values. Explicit file targets bypass the directory and filename conventions. Read environment values at process startup. A running trigger does not change its environment when another process changes its environment. Do not introduce environment aliases for CLI parameters. Native harness environment variables used for discovery are adapter inputs, not package configuration.
 

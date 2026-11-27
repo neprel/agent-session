@@ -13,13 +13,13 @@ This guide applies after AS-018 implements the workflows and AS-016 verifies the
 
 ## 2. PyPI account
 
-If `agent-session` does not yet exist on PyPI, sign in and open https://pypi.org/manage/account/publishing/. Add a pending GitHub Actions publisher. If the owner already controls the project, open the project's Manage > Publishing page instead.
+If `git-harness` does not yet exist on PyPI, sign in and open https://pypi.org/manage/account/publishing/. Add a pending GitHub Actions publisher. If the owner already controls the project, open the project's Manage > Publishing page instead.
 
 | Field | Value |
 |---|---|
-| PyPI project name (pending publisher only) | `agent-session` |
+| PyPI project name (pending publisher only) | `git-harness` |
 | Owner | Actual GitHub repository owner (user or organization) |
-| Repository name | Actual repository name, for example `agent-session` |
+| Repository name | Actual repository name, for example `git-harness` |
 | Workflow name | `release.yml` (filename only) |
 | Environment name | `pypi` |
 
@@ -38,7 +38,7 @@ git push origin v0.1.0
 
 4. Open Actions and select the release workflow. Wait for the test and build jobs to pass. Inspect the distribution artifact. Review the `pypi` deployment and approve it only if the release is correct.
 5. The publish job obtains a short-lived credential through GitHub OIDC. It uploads the tested wheel and sdist using the PyPA publishing action. The first successful publication activates the pending publisher.
-6. Verify the release on PyPI. Test installation in a clean environment with `uvx agent-session@0.1.0 --help` and `uvx agent-session@0.1.0 prime`.
+6. Verify the release on PyPI. Test installation in a clean environment with `uvx git-harness@0.1.0 --help` and `uvx git-harness@0.1.0 prime`.
 
 If a release fails, inspect the workflow before retrying. PyPI does not permit replacement of an existing distribution filename. If a partial upload has occurred, do not use a blanket skip-existing policy. Resolve the release state explicitly; a new version may be necessary. Never delete or overwrite a version automatically.
 

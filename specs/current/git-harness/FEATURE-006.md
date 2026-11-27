@@ -7,10 +7,10 @@ Write a short managed block to AGENTS.md in current directory. --config-dir sele
 Managed block (keep under 100 words):
 
 ```markdown
-<!-- agent-session:begin -->
+<!-- git-harness:begin -->
 ## Agent communication
-Use `uvx agent-session message --target PATH "TEXT"` to contact a running agent. Use `uvx agent-session check --target PATH` to check availability. Run `uvx agent-session prime` for usage. Lifecycle integrations register sessions. If registration is missing, run `uvx agent-session init` inside the session.
-<!-- agent-session:end -->
+Use `uvx git-harness message --target PATH "TEXT"` to contact a running agent. Use `uvx git-harness check --target PATH` to check availability. Run `uvx git-harness prime` for usage. Lifecycle integrations register sessions. If registration is missing, run `uvx git-harness init` inside the session.
+<!-- git-harness:end -->
 ```
 
 ## R2 - prime
@@ -30,4 +30,4 @@ The config command calls the common Harness.configure interface. Each harness ow
 
 ## R6 - Selective configuration merge
 
-Read the existing user configuration before a write. Create a file only if it does not exist. Update only entries owned by agent-session. Identify these entries by a stable, documented command signature. Preserve unrelated hook entries, matchers, order and other settings. Do not replace a complete lifecycle event array. Do not use a generic recursive merge for arrays. Reject invalid JSON or incompatible structures before a write. Do not change files that already have the required configuration. Use atomic writes. Do not change a user-owned TypeScript file that has a conflicting name. Test first install, repeated install, upgrade, unrelated hooks, invalid JSON and dry-run.
+Read the existing user configuration before a write. Create a file only if it does not exist. Update only entries owned by git-harness. Identify these entries by a stable, documented command signature. Preserve unrelated hook entries, matchers, order and other settings. Do not replace a complete lifecycle event array. Do not use a generic recursive merge for arrays. Reject invalid JSON or incompatible structures before a write. Do not change files that already have the required configuration. Use atomic writes. Do not change a user-owned TypeScript file that has a conflicting name. Test first install, repeated install, upgrade, unrelated hooks, invalid JSON and dry-run.

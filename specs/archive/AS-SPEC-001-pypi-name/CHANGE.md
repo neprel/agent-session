@@ -1,6 +1,6 @@
 # AS-SPEC-001: resolve the PyPI distribution name
 
-Status: independently reviewed; owner approval pending.
+Status: superseded by the owner-approved complete Git Harness rename (AS-SPEC-002). Historical proposal and independent review follow unchanged.
 Manager: manager/1. Date: 2026-11-27.
 Related tasks: AS-018, AS-016.
 

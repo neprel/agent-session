@@ -31,7 +31,7 @@ Accept optional `--from PATH` on the message command only. Resolve PATH with the
 
 ```json
 {
-  "from": "/workspace/agents/platform-backend-developer/1/.session/agent.json",
+  "from": "/workspace/agents/platform-backend-developer/1/.harness/agent.json",
   "message": "TASK-042 is ready for review."
 }
 ```

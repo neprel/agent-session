@@ -29,7 +29,7 @@ Foreground is default; show changes, batch counts, sends and errors in terminal;
 Store under watchers/ or timers/ beside agent.json. Filename is full UUID4 hex + .pid, not name or PID. Names optional, duplicate names allowed. Use unique exclusive publication and private permissions. PID is actual worker, not uvx launcher. Record:
 
 ```json
-{"name":"task-monitor","pid":18452,"agent_id":"curious-fox-a82f","created_at":1795708800.123,"cwd":"/workspace","command":["agent-session","watcher","--target","agents/supervisor/1","--path","tasks/**/*.md","--background"]}
+{"name":"task-monitor","pid":18452,"agent_id":"curious-fox-a82f","created_at":1795708800.123,"cwd":"/workspace","command":["git-harness","watcher","--target","agents/supervisor/1","--path","tasks/**/*.md","--background"]}
 ```
 
 Omit name if absent. created_at is psutil process creation time, not record creation time. Store public invocation argument array (not shell string); do not invent unavailable launcher arguments. Keep records out of Git. Do not execute recorded command automatically. Verify PID plus creation time and worker identity before termination; stale/reused PID is never signaled. Gracefully terminate with bounded wait. Remove record only after confirmed worker exit or stale identity; preserve on uncertain inspection. Check lists IDs, names, PID, running/stale/unknown; verbose/JSON includes metadata. Stop supports exact UUID or unambiguous prefix, or exact name (all matches); document precedence and reject ambiguous identifier/name collisions.

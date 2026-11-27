@@ -1,6 +1,6 @@
 # Project
 
-agent-session is a deterministic CLI for managing and communicating with coding agent sessions.
+Git Harness is a deterministic CLI for managing and communicating with coding agent sessions.
 
 ## Workspace
 
@@ -111,4 +111,4 @@ Use concise, direct language. Follow ASD-STE100 principles.
 
 Report completed work, blockers, decisions and unresolved issues. Do not repeat information already recorded in task files.
 
-Do not depend on agent-session for coordination until its implementation has been verified.
+Do not depend on git-harness for coordination until its implementation has been verified.

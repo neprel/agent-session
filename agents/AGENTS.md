@@ -44,6 +44,6 @@ Continue independent work while waiting for a reply.
 - Do not create additional agents or threads without authorization.
 - Do not use subagent messaging for independent agent sessions.
 - Do not use tmux input injection.
-- Do not use external messaging tools or agent-session.
+- Do not use external messaging tools or git-harness.
 - If native communication fails, preserve task state and report the failure.
 - Do not resend a message if its delivery result is uncertain.

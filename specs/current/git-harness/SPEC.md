@@ -1,4 +1,4 @@
-# Agent-session
+# Git Harness
 
 ## Intent
 
@@ -16,10 +16,10 @@ CLI -> command implementations -> shared services -> harness implementations. Th
 
 Product files belong in `works/`: source, tests, documentation, scripts, `pyproject.toml` and `uv.lock`. Run product commands from `works/`. Keep `.github/workflows/` at the repository root. Keep agents, specifications, tasks and probes outside `works/`. Do not create a nested Git repository.
 
-Module paths in these specifications are relative to `works/src/agent_session/` unless stated otherwise. Use this source layout. Each command MUST have a separate Python module. Each harness MUST have a separate Python package. Keep its integration resources in that package.
+Module paths in these specifications are relative to `works/src/git_harness/` unless stated otherwise. Use this source layout. Each command MUST have a separate Python module. Each harness MUST have a separate Python package. Keep its integration resources in that package.
 
 ```text
-works/src/agent_session/
+works/src/git_harness/
     __init__.py
     __main__.py
     cli.py
