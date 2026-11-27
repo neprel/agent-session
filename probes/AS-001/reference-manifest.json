@@ -1,0 +1,110 @@
+{
+  "revision": "fefb719088dc0157b16f071065daa30434a0b980",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "f44a6129dfbf3f2bf68e333d33489361a2113ebe2804e5852eb39adcf58bd35b",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/LICENSE"
+    },
+    {
+      "path": "docs/credential-free-native-testing.md",
+      "sha256": "9fe38a2428fc2583e6aff82337a37b676876495fc01034895945bec25e695f27",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/docs/credential-free-native-testing.md"
+    },
+    {
+      "path": "docs/format-compatibility.md",
+      "sha256": "3bdf568630fb716d252202ff23a1405705c41444c3cf5f30875016b9bc088018",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/docs/format-compatibility.md"
+    },
+    {
+      "path": "scripts/install-native-test-clis.sh",
+      "sha256": "9520a78e2210ec1be9777b73c11afd84b1cd0fb8891f07e933de00f239581201",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/scripts/install-native-test-clis.sh"
+    },
+    {
+      "path": "scripts/run-native-test-client.sh",
+      "sha256": "b1c98caf9b6c2a3ac614778f715667717b1f22cb18948c51c84cb2b52e809465",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/scripts/run-native-test-client.sh"
+    },
+    {
+      "path": "scripts/verify-native-resume.sh",
+      "sha256": "f2ba81c2180070ab19d2806cb7e2472c5ddc8e7b274bdc6a9e0d1419f413194b",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/scripts/verify-native-resume.sh"
+    },
+    {
+      "path": "src/session_migrate/discovery.py",
+      "sha256": "e9154aa5831e13893487994fafb18d6c994c699c87bb0fc3585e5c9296b6b4a1",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/src/session_migrate/discovery.py"
+    },
+    {
+      "path": "src/session_migrate/errors.py",
+      "sha256": "59a562bc41451c0a576999c05b7c24c461e7dcfed66d72077ee497f2b4da68cb",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/src/session_migrate/errors.py"
+    },
+    {
+      "path": "src/session_migrate/formats/claude.py",
+      "sha256": "b914060468f8afd79500b12fd5f53da256190369af356e5dd015f2a226a8613f",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/src/session_migrate/formats/claude.py"
+    },
+    {
+      "path": "src/session_migrate/formats/codex.py",
+      "sha256": "5775cf3e09af829615f47e3aff5b624b5a184d99a2f08f260c53b1817442a889",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/src/session_migrate/formats/codex.py"
+    },
+    {
+      "path": "src/session_migrate/formats/common.py",
+      "sha256": "bc6f41a9b504b8f4f0cc17a2a28fa444d973fef3f0efa3af6247d68b35dabaee",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/src/session_migrate/formats/common.py"
+    },
+    {
+      "path": "src/session_migrate/formats/opencode.py",
+      "sha256": "516f9d83aef642c9c38c478f78a55654d4385b42b35e65824b3c99813d79e58e",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/src/session_migrate/formats/opencode.py"
+    },
+    {
+      "path": "src/session_migrate/formats/opencode_v2.py",
+      "sha256": "01bfcb02a2cda0a3871c6180375b1071d0794926a8a1184d901971b1b9d49a91",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/src/session_migrate/formats/opencode_v2.py"
+    },
+    {
+      "path": "src/session_migrate/formats/pi.py",
+      "sha256": "d9fd3e1807a444f5818f40004f1994e6dbe2b9701f39a2c0c877ada486218f6c",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/src/session_migrate/formats/pi.py"
+    },
+    {
+      "path": "src/session_migrate/jsonl.py",
+      "sha256": "8ac4ad427c07cdc15e253dfd0fe52d3508df0dfdc0a0e98ac0774c2d8bdf891e",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/src/session_migrate/jsonl.py"
+    },
+    {
+      "path": "src/session_migrate/model.py",
+      "sha256": "e14c1338718baa00597029c9a853aba9e0386f063cd2f33d393460dd8c185150",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/src/session_migrate/model.py"
+    },
+    {
+      "path": "tests/test_additional_formats_native.py",
+      "sha256": "f77052c5b0d3dbb46618e92ed51f27d5005f6cf30727400fa3f0c59fd812334f",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/tests/test_additional_formats_native.py"
+    },
+    {
+      "path": "tests/test_claude_codex_corpus_native.py",
+      "sha256": "9b7afcfc8e6ee356ef6d01db9fd96d12e7ed4dfcc0f6c507621ce199c5dcba09",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/tests/test_claude_codex_corpus_native.py"
+    },
+    {
+      "path": "tests/test_opencode_v2_native.py",
+      "sha256": "2d3121938b0ee70b8cd677bc07ce7d9d5b69f63e6d0c3f08dd5c0e4e301cdb12",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/tests/test_opencode_v2_native.py"
+    },
+    {
+      "path": "tests/test_pi_omp_corpus_native.py",
+      "sha256": "67bd5db10e1d91004468e5d119471a56f8072c6b61ebea68679bece2f62bf46e",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/tests/test_pi_omp_corpus_native.py"
+    },
+    {
+      "path": "tests/offline_provider.py",
+      "sha256": "7d32864357b473b12296022342afd2810583c75a8d39bc6875528c45957c30cb",
+      "url": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/tests/offline_provider.py"
+    }
+  ]
+}

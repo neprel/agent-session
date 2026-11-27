@@ -1,0 +1,184 @@
+{
+  "info": {
+    "id": "ses_22222222222242228222222222222222",
+    "projectID": "global",
+    "title": "Imported session",
+    "agent": "build",
+    "model": {
+      "id": "fixture-model",
+      "providerID": "fixture"
+    },
+    "location": {
+      "directory": "/fixture/work"
+    },
+    "cost": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "reasoning": 0,
+      "cache": {
+        "read": 0,
+        "write": 0
+      }
+    },
+    "time": {
+      "created": 1786971600000,
+      "updated": 1786971606000
+    }
+  },
+  "messages": [
+    {
+      "id": "msg_00fceb48000100000000000000",
+      "time": {
+        "created": 1786971600000
+      },
+      "type": "user",
+      "text": "Remember synthetic migrator nonce BETA-2048.",
+      "files": [
+        {
+          "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+          "mime": "image/png",
+          "source": {
+            "type": "inline"
+          }
+        }
+      ]
+    },
+    {
+      "id": "msg_00fceb86800100000000000000",
+      "time": {
+        "created": 1786971601000,
+        "completed": 1786971601000
+      },
+      "type": "assistant",
+      "agent": "build",
+      "model": {
+        "id": "fixture-model",
+        "providerID": "fixture"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "I will remember the synthetic nonce."
+        }
+      ],
+      "finish": "stop",
+      "cost": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      }
+    },
+    {
+      "id": "msg_00fcebc5000100000000000000",
+      "time": {
+        "created": 1786971602000,
+        "completed": 1786971602000
+      },
+      "type": "assistant",
+      "agent": "build",
+      "model": {
+        "id": "fixture-model",
+        "providerID": "fixture"
+      },
+      "content": [
+        {
+          "type": "tool",
+          "id": "call_fixture_1",
+          "name": "shell",
+          "state": {
+            "status": "completed",
+            "input": {
+              "command": "pwd"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "/work"
+              },
+              {
+                "type": "file",
+                "uri": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+                "mime": "image/png"
+              }
+            ]
+          },
+          "time": {
+            "created": 1786971602000,
+            "completed": 1786971603000
+          }
+        }
+      ],
+      "finish": "tool-calls",
+      "cost": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      }
+    },
+    {
+      "id": "msg_00fcec42000300000000000000",
+      "time": {
+        "created": 1786971604000,
+        "completed": 1786971604000
+      },
+      "type": "compaction",
+      "status": "completed",
+      "reason": "auto",
+      "model": {
+        "id": "fixture-model",
+        "providerID": "fixture"
+      },
+      "summary": "Synthetic summary: remember nonce BETA-2048 and the completed shell result.",
+      "recent": ""
+    },
+    {
+      "id": "msg_00fcec80800100000000000000",
+      "time": {
+        "created": 1786971605000
+      },
+      "type": "user",
+      "text": "Continue after the synthetic compaction."
+    },
+    {
+      "id": "msg_00fcecbf000100000000000000",
+      "time": {
+        "created": 1786971606000,
+        "completed": 1786971606000
+      },
+      "type": "assistant",
+      "agent": "build",
+      "model": {
+        "id": "fixture-model",
+        "providerID": "fixture"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The synthetic post-compaction fixture is complete."
+        }
+      ],
+      "finish": "stop",
+      "cost": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      }
+    }
+  ]
+}

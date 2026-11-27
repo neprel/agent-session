@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-27",
+  "authenticated_user": "neprel",
+  "source_repository": {
+    "id": 1472945224,
+    "full_name": "neprel/agent-session",
+    "default_head": "4d45ddb64363b93f546e455698299423297fb046"
+  },
+  "existing_target_repository": {
+    "id": 1462637028,
+    "full_name": "neprel/git-harness",
+    "default_head": "976e51f534107e7ec8748e8f30bd5df26160c6ff"
+  },
+  "rename_result": {
+    "status": 422,
+    "reason": "name already exists on this account"
+  },
+  "remote": "restored to verified source; no push to existing target",
+  "pypi_git_harness_json_status": 404
+}

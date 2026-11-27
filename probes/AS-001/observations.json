@@ -1,0 +1,179 @@
+{
+  "date": "2026-11-27",
+  "os": "Darwin 24.6.0 arm64",
+  "network_gate": {
+    "loopback": "connected",
+    "external_ipv4": "1.1.1.1:443 denied with PermissionError",
+    "scope": "macOS sandbox-exec inherited by children; IPv6/DNS/runner enforcement not separately tested"
+  },
+  "startup": [
+    {
+      "harness": "codex",
+      "args": [
+        "--no-daemon",
+        "--no-alt-screen"
+      ],
+      "returncode": 0,
+      "forced_cleanup": false
+    },
+    {
+      "harness": "claude",
+      "args": [
+        "--bare",
+        "--strict-mcp-config"
+      ],
+      "returncode": 143,
+      "forced_cleanup": true
+    },
+    {
+      "harness": "opencode",
+      "args": [
+        "--standalone"
+      ],
+      "returncode": 1,
+      "forced_cleanup": false
+    },
+    {
+      "harness": "pi",
+      "args": [
+        "--offline",
+        "--no-extensions",
+        "--no-mcp",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-context-files"
+      ],
+      "returncode": 0,
+      "forced_cleanup": true
+    }
+  ],
+  "offline": [
+    {
+      "harness": "codex",
+      "args": [
+        "exec",
+        "--skip-git-repo-check",
+        "--json",
+        "AS001_SYNTHETIC_DISCOVERY"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "request_paths": [
+        "/v1/responses"
+      ],
+      "marker_received": true,
+      "reply_returned": true
+    },
+    {
+      "harness": "claude",
+      "args": [
+        "--bare",
+        "--strict-mcp-config",
+        "--print",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--model",
+        "claude-haiku-4-5-20251001",
+        "AS001_SYNTHETIC_DISCOVERY"
+      ],
+      "returncode": 1,
+      "timeout": false,
+      "request_paths": [
+        "/v1/messages?beta=true",
+        "/v1/messages?beta=true"
+      ],
+      "marker_received": true,
+      "reply_returned": false
+    },
+    {
+      "harness": "pi",
+      "args": [
+        "--offline",
+        "--no-extensions",
+        "--no-mcp",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-context-files",
+        "--print",
+        "--mode",
+        "json",
+        "--model",
+        "fixture/fixture-model",
+        "AS001_SYNTHETIC_DISCOVERY"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "request_paths": [
+        "/v1/chat/completions"
+      ],
+      "marker_received": true,
+      "reply_returned": true
+    },
+    {
+      "harness": "opencode",
+      "args": [
+        "run",
+        "--standalone",
+        "--model",
+        "fixture/test",
+        "--format",
+        "json",
+        "AS001_SYNTHETIC_DISCOVERY"
+      ],
+      "returncode": 1,
+      "timeout": false,
+      "request_paths": [],
+      "marker_received": false,
+      "reply_returned": false
+    }
+  ],
+  "versions": {
+    "codex": "0.165.0",
+    "claude": "2.1.322",
+    "opencode": "2.2.7",
+    "pi": "1.6.1"
+  },
+  "executable_sha256": {
+    "codex": "a45099154d7fb4a5ed8a56f40966a95deb938e508bab23e6985035c709e9a85a",
+    "claude": "a9d237949db816a0b7afd88a9a8e1df36b3a597a30f5a41d1c0539eb180a3450",
+    "opencode": "b9d576000191d7f441198076f6d50a843064259709ed31f7de995cbfc540d85f",
+    "pi-launcher": "da0c6a49fe94aadc9765cc7afc6ba6b17e553eed0247d0385c160bc188f5cfbb"
+  },
+  "native_reader_checks": {
+    "codex": {
+      "events": {
+        "context": 1,
+        "message": 2,
+        "opaque": 9
+      },
+      "prompt_and_reply_found": true
+    },
+    "claude": {
+      "events": {
+        "message": 2,
+        "opaque": 8
+      },
+      "prompt_found": true,
+      "reply_found": false
+    },
+    "pi": {
+      "error": "Pi message entry has an unsupported role",
+      "observed_roles": [
+        "system",
+        "user",
+        "assistant"
+      ]
+    },
+    "opencode": {
+      "version_parser_result": null
+    }
+  },
+  "limits": [
+    "No hook, plugin or extension execution was verified",
+    "No native delivery, idle wake, busy queue or safe tmux state was verified",
+    "No native import or cross-harness route was verified",
+    "Candidate upstream client pins were inspected, not provisioned or executed",
+    "Research scripts report observations and intentionally do not certify support from exit code 0"
+  ]
+}

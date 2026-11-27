@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "upstream_revision": "fefb719088dc0157b16f071065daa30434a0b980",
+  "files": {
+    "codex-0.144.4.jsonl": {
+      "harness": "codex",
+      "cli_version": "0.144.4",
+      "format": "native-synthetic",
+      "source": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/tests/fixtures/codex-0.144.4/basic.jsonl",
+      "sha256": "c2909c6f9f3d736f311e2e5db7129118cd8cd3200d866da4c9868051e1cac771"
+    },
+    "claude-2.1.209.jsonl": {
+      "harness": "claude",
+      "cli_version": "2.1.209",
+      "format": "native-synthetic",
+      "source": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/tests/fixtures/claude-2.1.209/basic.jsonl",
+      "sha256": "771d8d6a6e2e6d9d3f01e16aede0384b84a6256efd1b6c0be3e5967118b5c0d0"
+    },
+    "pi-0.80.6.jsonl": {
+      "harness": "pi",
+      "cli_version": "0.80.6",
+      "format": "native-synthetic",
+      "source": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/tests/fixtures/pi-0.80.6/basic.jsonl",
+      "sha256": "89d5833170b60d7f8dc33bba247d6ac20ea1b783f984912c9f311d1415158587"
+    },
+    "opencode-1.17.20.json": {
+      "harness": "opencode",
+      "cli_version": "1.17.20",
+      "format": "native-synthetic",
+      "source": "https://raw.githubusercontent.com/xhluca/session-migrate/fefb719088dc0157b16f071065daa30434a0b980/tests/fixtures/opencode-1.17.20/basic.json",
+      "sha256": "3541dfedd7b8ba9656a4e8568b7f8f9e948374d70ae44982544fa655b29ee32a"
+    },
+    "opencode-2.0.23.json": {
+      "harness": "opencode",
+      "cli_version": "2.0.23",
+      "format": "native-synthetic",
+      "source": "generated with pinned formats/opencode.py from codex-0.144.4.jsonl; deterministic UUID(int=1...)",
+      "losses": {},
+      "sha256": "7da64aba3d74e58580f4c8b264e2fa03719738eb5fd241f85359429ccad2b122"
+    },
+    "pi-0.80.6-branch-compaction.jsonl": {
+      "harness": "pi",
+      "cli_version": "0.80.6",
+      "format": "native-synthetic",
+      "source": "adapted basic fixture: added synthetic compaction and selected/inactive branches",
+      "sha256": "9744fcaee346b4ea729acc661387c1b85324925a107965ede81f60ecd52f75d3"
+    }
+  }
+}

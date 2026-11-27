@@ -1,0 +1,80 @@
+{
+  "name": "Pinned native foundation",
+  "on": {
+    "workflow_call": {}
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "defaults": {
+    "run": {
+      "shell": "bash",
+      "working-directory": "works"
+    }
+  },
+  "jobs": {
+    "native-foundation": {
+      "name": "Native foundation ${{ matrix.client }}",
+      "runs-on": "ubuntu-latest",
+      "timeout-minutes": 15,
+      "strategy": {
+        "fail-fast": false,
+        "matrix": {
+          "client": [
+            "codex",
+            "claude",
+            "opencode",
+            "pi"
+          ]
+        }
+      },
+      "env": {
+        "NATIVE_CLIENT": "${{ matrix.client }}"
+      },
+      "steps": [
+        {
+          "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "with": {
+            "persist-credentials": false
+          }
+        },
+        {
+          "uses": "astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d",
+          "with": {
+            "version": "0.13.0",
+            "python-version": "3.12",
+            "working-directory": "works",
+            "enable-cache": true,
+            "cache-dependency-glob": "uv.lock",
+            "require-checksums": true
+          }
+        },
+        {
+          "name": "Provision OS audit tools",
+          "run": "sudo --non-interactive apt-get update\nsudo --non-interactive apt-get install --yes strace"
+        },
+        {
+          "run": "uv sync --locked --dev"
+        },
+        {
+          "name": "Install exact integrity-locked client",
+          "run": "uv run --locked python scripts/provision_native.py --destination \"$RUNNER_TEMP/native\" --client \"$NATIVE_CLIENT\""
+        },
+        {
+          "name": "Verify namespace and pinned versions without inference",
+          "run": "uv run --locked python scripts/run_native.py --linux-sudo --manifest \"$RUNNER_TEMP/native/manifest.json\" --client \"$NATIVE_CLIENT\" --suite foundation --report reports/native-foundation.json"
+        },
+        {
+          "uses": "actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "if": "always()",
+          "with": {
+            "name": "native-${{ matrix.client }}-${{ github.run_attempt }}",
+            "path": "works/reports/*.json",
+            "if-no-files-found": "warn",
+            "retention-days": 7
+          }
+        }
+      ]
+    }
+  }
+}

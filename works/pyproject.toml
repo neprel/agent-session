@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "git-harness"
+version = "0.1.0"
+description = "Deterministic CLI for local coding agent sessions"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+dependencies = ["watchdog>=6", "croniter>=6", "unique-namer>=1", "psutil>=7"]
+
+[project.scripts]
+git-harness = "git_harness.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8.3", "pytest-cov>=6", "ruff>=0.9"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/git_harness"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "docs", "pyproject.toml", "uv.lock", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md"]
+exclude = ["/tests", "/scripts"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -m 'not native' --strict-markers --cov=git_harness --cov-branch --cov-report=term-missing --cov-fail-under=85"
+markers = ["unit: isolated unit tests", "integration: synthetic integration tests", "native: explicit opt-in pinned native harness tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["git_harness"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 85
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+include = ["src/**/*.py", "tests/**/*.py", "scripts/**/*.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

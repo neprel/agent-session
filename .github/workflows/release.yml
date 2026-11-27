@@ -1,0 +1,202 @@
+{
+  "name": "Release",
+  "on": {
+    "push": {
+      "tags": [
+        "v*"
+      ]
+    },
+    "workflow_dispatch": {},
+    "pull_request": {
+      "paths": [
+        ".github/workflows/**",
+        "works/scripts/**",
+        "works/PUBLISHING.md"
+      ]
+    }
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "defaults": {
+    "run": {
+      "shell": "bash",
+      "working-directory": "works"
+    }
+  },
+  "concurrency": {
+    "group": "release-${{ github.ref }}",
+    "cancel-in-progress": false
+  },
+  "jobs": {
+    "portable": {
+      "uses": "./.github/workflows/_portable.yml"
+    },
+    "native-foundation": {
+      "uses": "./.github/workflows/_native-foundation.yml"
+    },
+    "identity": {
+      "runs-on": "ubuntu-latest",
+      "timeout-minutes": 5,
+      "env": {
+        "DEFAULT_BRANCH": "${{ github.event.repository.default_branch }}"
+      },
+      "steps": [
+        {
+          "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "with": {
+            "persist-credentials": false,
+            "fetch-depth": 0
+          }
+        },
+        {
+          "uses": "astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d",
+          "with": {
+            "version": "0.13.0",
+            "python-version": "3.12",
+            "working-directory": "works",
+            "enable-cache": true,
+            "cache-dependency-glob": "uv.lock",
+            "require-checksums": true
+          }
+        },
+        {
+          "run": "uv sync --locked --dev\nuv run --locked python scripts/verify_release.py"
+        }
+      ]
+    },
+    "native-acceptance": {
+      "if": "github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')",
+      "runs-on": "ubuntu-latest",
+      "timeout-minutes": 20,
+      "strategy": {
+        "fail-fast": false,
+        "matrix": {
+          "client": [
+            "codex",
+            "claude",
+            "opencode",
+            "pi"
+          ]
+        }
+      },
+      "env": {
+        "NATIVE_CLIENT": "${{ matrix.client }}"
+      },
+      "steps": [
+        {
+          "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "with": {
+            "persist-credentials": false
+          }
+        },
+        {
+          "uses": "astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d",
+          "with": {
+            "version": "0.13.0",
+            "python-version": "3.12",
+            "working-directory": "works",
+            "enable-cache": true,
+            "cache-dependency-glob": "uv.lock",
+            "require-checksums": true
+          }
+        },
+        {
+          "run": "uv sync --locked --dev\nuv run --locked python scripts/check_native_acceptance.py"
+        },
+        {
+          "run": "sudo --non-interactive apt-get update\nsudo --non-interactive apt-get install --yes strace"
+        },
+        {
+          "run": "uv run --locked python scripts/provision_native.py --destination \"$RUNNER_TEMP/native\" --client \"$NATIVE_CLIENT\"\nuv run --locked python scripts/run_native.py --linux-sudo --manifest \"$RUNNER_TEMP/native/manifest.json\" --client \"$NATIVE_CLIENT\" --suite acceptance --report reports/native-acceptance.json"
+        },
+        {
+          "uses": "actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "if": "always()",
+          "with": {
+            "name": "native-acceptance-${{ matrix.client }}-${{ github.run_attempt }}",
+            "path": "works/reports/*.json",
+            "if-no-files-found": "warn",
+            "retention-days": 7
+          }
+        }
+      ]
+    },
+    "build": {
+      "needs": [
+        "portable",
+        "native-foundation",
+        "identity"
+      ],
+      "runs-on": "ubuntu-latest",
+      "timeout-minutes": 10,
+      "steps": [
+        {
+          "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "with": {
+            "persist-credentials": false
+          }
+        },
+        {
+          "uses": "astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d",
+          "with": {
+            "version": "0.13.0",
+            "python-version": "3.12",
+            "working-directory": "works",
+            "enable-cache": true,
+            "cache-dependency-glob": "uv.lock",
+            "require-checksums": true
+          }
+        },
+        {
+          "run": "uv sync --locked --dev\nuv build\nuv run --locked python scripts/verify_distribution.py"
+        },
+        {
+          "uses": "actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "with": {
+            "name": "distributions-${{ github.sha }}",
+            "path": "works/dist/*.whl\nworks/dist/*.tar.gz",
+            "if-no-files-found": "error",
+            "retention-days": 14
+          }
+        }
+      ]
+    },
+    "publish": {
+      "if": "github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')",
+      "needs": [
+        "portable",
+        "native-foundation",
+        "identity",
+        "native-acceptance",
+        "build"
+      ],
+      "runs-on": "ubuntu-latest",
+      "timeout-minutes": 10,
+      "environment": {
+        "name": "pypi",
+        "url": "https://pypi.org/p/git-harness"
+      },
+      "permissions": {
+        "id-token": "write"
+      },
+      "steps": [
+        {
+          "uses": "actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333",
+          "with": {
+            "name": "distributions-${{ github.sha }}",
+            "path": "dist"
+          }
+        },
+        {
+          "uses": "pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086",
+          "with": {
+            "packages-dir": "dist/",
+            "attestations": true,
+            "skip-existing": false
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "version": 1,
+  "notice": "Synthetic contract scenarios; not proof of native hook/plugin execution.",
+  "scenarios": {
+    "codex": {
+      "discovery": {
+        "launch_directory": "/fixture/work",
+        "session_id": "20000000-0000-4000-8000-000000000000",
+        "endpoints": {}
+      },
+      "lifecycle": [
+        {
+          "action": "startup",
+          "runtime_id": "runtime-A"
+        },
+        {
+          "action": "resume",
+          "runtime_id": "runtime-B",
+          "same_native_id": true
+        },
+        {
+          "action": "late-shutdown",
+          "runtime_id": "runtime-A",
+          "must_not_stop": "runtime-B"
+        }
+      ],
+      "invalid_records": [
+        "{broken",
+        {
+          "type": "unknown_synthetic_record"
+        }
+      ],
+      "probe_responses": [
+        {
+          "available": true,
+          "status": "idle"
+        },
+        {
+          "available": false,
+          "status": "offline"
+        },
+        {
+          "available": null,
+          "status": "unknown"
+        }
+      ]
+    },
+    "claude": {
+      "discovery": {
+        "launch_directory": "/fixture/work",
+        "session_id": "10000000-0000-4000-8000-000000000000",
+        "endpoints": {}
+      },
+      "lifecycle": [
+        {
+          "action": "startup",
+          "runtime_id": "runtime-A"
+        },
+        {
+          "action": "resume",
+          "runtime_id": "runtime-B",
+          "same_native_id": true
+        },
+        {
+          "action": "late-shutdown",
+          "runtime_id": "runtime-A",
+          "must_not_stop": "runtime-B"
+        }
+      ],
+      "invalid_records": [
+        "{broken",
+        {
+          "type": "unknown_synthetic_record"
+        }
+      ],
+      "probe_responses": [
+        {
+          "available": true,
+          "status": "idle"
+        },
+        {
+          "available": false,
+          "status": "offline"
+        },
+        {
+          "available": null,
+          "status": "unknown"
+        }
+      ]
+    },
+    "opencode": {
+      "discovery": {
+        "launch_directory": "/fixture/work",
+        "session_id": "ses_22222222222242228222222222222222",
+        "endpoints": {}
+      },
+      "lifecycle": [
+        {
+          "action": "startup",
+          "runtime_id": "runtime-A"
+        },
+        {
+          "action": "resume",
+          "runtime_id": "runtime-B",
+          "same_native_id": true
+        },
+        {
+          "action": "late-shutdown",
+          "runtime_id": "runtime-A",
+          "must_not_stop": "runtime-B"
+        }
+      ],
+      "invalid_records": [
+        "{broken",
+        {
+          "type": "unknown_synthetic_record"
+        }
+      ],
+      "probe_responses": [
+        {
+          "available": true,
+          "status": "idle"
+        },
+        {
+          "available": false,
+          "status": "offline"
+        },
+        {
+          "available": null,
+          "status": "unknown"
+        }
+      ]
+    },
+    "pi": {
+      "discovery": {
+        "launch_directory": "/fixture/work",
+        "session_id": "11111111-1111-4111-8111-111111111111",
+        "endpoints": {}
+      },
+      "lifecycle": [
+        {
+          "action": "startup",
+          "runtime_id": "runtime-A"
+        },
+        {
+          "action": "resume",
+          "runtime_id": "runtime-B",
+          "same_native_id": true
+        },
+        {
+          "action": "late-shutdown",
+          "runtime_id": "runtime-A",
+          "must_not_stop": "runtime-B"
+        }
+      ],
+      "invalid_records": [
+        "{broken",
+        {
+          "type": "unknown_synthetic_record"
+        }
+      ],
+      "probe_responses": [
+        {
+          "available": true,
+          "status": "idle"
+        },
+        {
+          "available": false,
+          "status": "offline"
+        },
+        {
+          "available": null,
+          "status": "unknown"
+        }
+      ]
+    }
+  }
+}
