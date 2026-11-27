@@ -1,0 +1,57 @@
+{
+  "checked_date": "2026-11-27",
+  "projects": [
+    {
+      "requested_name": "agent-session",
+      "url": "https://pypi.org/pypi/agent-session/json",
+      "status": 200,
+      "name": "agent_session",
+      "version": "0.1.0",
+      "project_urls": {
+        "Homepage": "https://github.com/yingluosanqian/agent_session",
+        "Issues": "https://github.com/yingluosanqian/agent_session/issues",
+        "Repository": "https://github.com/yingluosanqian/agent_session"
+      },
+      "ownership": {
+        "organization": null,
+        "roles": [
+          {
+            "role": "Owner",
+            "user": "yihanc"
+          }
+        ]
+      }
+    },
+    {
+      "requested_name": "agent-session-cli",
+      "url": "https://pypi.org/pypi/agent-session-cli/json",
+      "status": 404
+    },
+    {
+      "requested_name": "agent-session-tools",
+      "url": "https://pypi.org/pypi/agent-session-tools/json",
+      "status": 404
+    },
+    {
+      "requested_name": "agent-session-manager",
+      "url": "https://pypi.org/pypi/agent-session-manager/json",
+      "status": 200,
+      "name": "agent-session-manager",
+      "version": "0.16.1",
+      "project_urls": {
+        "Homepage": "https://github.com/Changroro/agent-session-manager",
+        "Issues": "https://github.com/Changroro/agent-session-manager/issues",
+        "Repository": "https://github.com/Changroro/agent-session-manager"
+      },
+      "ownership": {
+        "organization": null,
+        "roles": [
+          {
+            "role": "Owner",
+            "user": "BaeChangHyun"
+          }
+        ]
+      }
+    }
+  ]
+}

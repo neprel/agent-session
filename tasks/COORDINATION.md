@@ -77,3 +77,7 @@ Owner approved the works/ layout and corresponding current-specification path ed
 ## Read-only release setup check
 
 On 2026-11-27, GitHub reported zero repository environments, no active rules for main, and no legacy branch protection. Owner setup remains pending: protected main/required CI, pypi environment with owner approval/tag restrictions, and matching PyPI Trusted Publisher. No account settings were changed. Implementation and CI preparation continue; request owner setup only with the concrete release handoff.
+
+## Distribution-name blocker
+
+Primary PyPI JSON on 2026-11-27 reports agent-session occupied by agent_session 0.1.0 (owner yihanc; unrelated source repository). Candidate checks and URLs: probes/AS-018/pypi-name-check.json. Proposed distribution-only rename: specs/changes/AS-SPEC-001-pypi-name/CHANGE.md. Independent review and owner approval are required before implementation. Developer notified; continue independent work. Publishing readiness is blocked pending the owner decision; no current name or spec was changed.
