@@ -30,9 +30,9 @@ Hosted CI must pass Linux/macOS Python 3.11/3.12/3.13, lint, architecture/defaul
 
 Pending owner setup: branch protection/required CI, pypi environment approval/tag restrictions and PyPI Trusted Publisher. Values after repository resolution: neprel/git-harness, release.yml, pypi, distribution git-harness.
 
-## Repository rename blocker
+## Repository identity
 
-Authenticated gh user and owner are neprel. Verified source repository ID 1472945224. Existing target neprel/git-harness is a different repository (ID 1462637028). Rename returned HTTP 422. Origin is restored to the verified source; no push went to the existing target. Evidence: probes/AS-019/repository-check.json. Owner decision is required before changing the separate existing repository. PyPI git-harness returned 404 on 2026-11-27; recheck before publication.
+Owner freed the target name. Authenticated gh user neprel verified the target returned 404, then renamed source repository ID 1472945224 to neprel/git-harness. The ID, history/default head and open draft PR #1 remain intact. Origin is git@github.com:neprel/git-harness.git; repository access and remote head verified. Current proof: probes/AS-019/repository-rename.json. Earlier collision evidence remains unchanged. PyPI git-harness returned 404 on 2026-11-27; recheck before publication. No tags or publication.
 
 ## Communication
 

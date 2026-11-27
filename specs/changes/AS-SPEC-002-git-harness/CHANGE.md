@@ -17,6 +17,8 @@ Verification: obsolete-name audit of maintained content with explicit historical
 
 Owner supplied these complete rename requirements in response to the naming decision on 2026-11-27. This supersedes AS-SPEC-001.
 
+The owner freed the GitHub target name. Manager verified target HTTP 404, renamed the source and confirmed repository ID 1472945224, history/default head, PR #1 and origin access. See probes/AS-019/repository-rename.json.
+
 ## Independent review
 
 Pending reviewer/1 after AS-019 submission.

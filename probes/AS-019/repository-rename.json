@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-27",
+  "authenticated_user": "neprel",
+  "owner_resolution": "Owner reported deleting the separate existing target repository; its API returned 404 before the rename.",
+  "repository_id_before": 1472945224,
+  "repository_id_after": 1472945224,
+  "full_name": "neprel/git-harness",
+  "url": "https://github.com/neprel/git-harness",
+  "description": "Git Harness: a deterministic CLI for managing coding-agent sessions",
+  "default_branch": "main",
+  "created_at_before": "2026-11-26T09:31:47Z",
+  "created_at_after": "2026-11-26T09:31:47Z",
+  "remote": "git@github.com:neprel/git-harness.git",
+  "verified_remote_head": "4d45ddb64363b93f546e455698299423297fb046",
+  "preserved_pull_request": {
+    "baseRefName": "main",
+    "headRefName": "work/agent-session-implementation",
+    "isDraft": true,
+    "number": 1,
+    "state": "OPEN",
+    "url": "https://github.com/neprel/git-harness/pull/1"
+  },
+  "changed_fields": [
+    "name",
+    "description"
+  ],
+  "tags_created": false,
+  "published": false
+}
