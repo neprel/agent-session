@@ -1,0 +1,8 @@
+{
+  "artifacts_sha256": {
+    ".gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+    "agent_session-0.1.0-py3-none-any.whl": "87130cb0810c33acad00627e9c7a544ccc9cba7649f625c2f2feb9266f9c276e",
+    "agent_session-0.1.0.tar.gz": "68d2983620c0a08849e9c1e315f46d34243e7ded001303a68cab4579fb66f7e7"
+  },
+  "note": "Local verification artifacts only; no publication."
+}

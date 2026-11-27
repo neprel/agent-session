@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-session"
+version = "0.1.0"
+description = "Deterministic CLI for local coding agent sessions"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+dependencies = ["watchdog>=6", "croniter>=6", "unique-namer>=1", "psutil>=7"]
+
+[project.scripts]
+agent-session = "agent_session.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8.3", "pytest-cov>=6", "ruff>=0.9"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent_session"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "docs", "pyproject.toml", "uv.lock", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -m 'not native' --strict-markers --cov=agent_session --cov-branch --cov-report=term-missing --cov-fail-under=85"
+markers = ["unit: isolated unit tests", "integration: synthetic integration tests", "native: explicit opt-in pinned native harness tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["agent_session"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 85
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+include = ["src/**/*.py", "tests/**/*.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
