@@ -48,7 +48,7 @@ Reviewer thread: 01a21c91-08df-7840-9f1c-123aca6c8794.
 
 ## Current state
 
-AS-001 independently accepted by reviewer/1 at 37fa8d2; task is in tasks/done/developer. AS-002 assigned to developer/1, reviewer/1 designated. AS-017 follows immediately after AS-002 acceptance. Other tasks remain unassigned.
+AS-001 accepted at 37fa8d2; AS-002 accepted at 2e8c092. Both tasks are in tasks/done/developer. AS-017 assigned to developer/1 with reviewer/1 designated. Establish isolated tests and mock-provider protocols before registration. AS-018 follows as soon as this foundation is accepted. Other tasks remain unassigned.
 
 ## Known verification risks
 
