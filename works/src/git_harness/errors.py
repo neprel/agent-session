@@ -13,7 +13,7 @@ class ExitCode(IntEnum):
     CONFLICT = 6
 
 
-class AgentSessionError(Exception):
+class GitHarnessError(Exception):
     def __init__(self, code: str, message: str, exit_code: ExitCode = ExitCode.FAILURE):
         super().__init__(message)
         self.code = code
@@ -22,7 +22,7 @@ class AgentSessionError(Exception):
 
 def not_implemented(command: str) -> int:
     """Fail explicitly until the command's implementation task is complete."""
-    raise AgentSessionError(
+    raise GitHarnessError(
         "unsupported",
         f"{command} is not implemented in this foundation build",
         ExitCode.UNSUPPORTED,

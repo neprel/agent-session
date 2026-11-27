@@ -7,11 +7,11 @@ from pathlib import Path
 
 import pytest
 
-from agent_session.cli import main
-from agent_session.commands import COMMANDS
-from agent_session.delivery import DeliveryStatus
-from agent_session.harnesses import HARNESSES
-from agent_session.harnesses.base import (
+from git_harness.cli import main
+from git_harness.commands import COMMANDS
+from git_harness.delivery import DeliveryStatus
+from git_harness.harnesses import HARNESSES
+from git_harness.harnesses.base import (
     Capabilities,
     ConfigureRequest,
     DiscoverRequest,
@@ -23,7 +23,7 @@ from agent_session.harnesses.base import (
     Unsupported,
     WriteHistoryRequest,
 )
-from agent_session.history import (
+from git_harness.history import (
     CompactionContent,
     EventKind,
     Image,
@@ -35,8 +35,8 @@ from agent_session.history import (
     ToolCallContent,
     ToolResultContent,
 )
-from agent_session.processes import ProcessIdentity
-from agent_session.session import NativeSession, RuntimeOwner
+from git_harness.processes import ProcessIdentity
+from git_harness.session import NativeSession, RuntimeOwner
 from tests.support.fake_harness import FakeHarness
 
 pytestmark = pytest.mark.integration
@@ -86,7 +86,7 @@ class FakeFlow:
         assert read.cursor.session_id == written.session.session_id
         configuration = adapter.configure(
             ConfigureRequest(
-                args.launch_directory, args.launch_directory, {}, ("agent-session",), True
+                args.launch_directory, args.launch_directory, {}, ("git-harness",), True
             )
         )
         assert configuration.changes[0].action == "unchanged"
@@ -118,7 +118,7 @@ def test_unverified_native_adapters_fail_explicitly(name, tmp_path):
         "send": SendRequest(native, "hello", 1, owner),
         "read_history": ReadHistoryRequest(native, 1),
         "write_history": WriteHistoryRequest(tmp_path, {}, (), ProjectionBoundary(0, 0, None), 1),
-        "configure": ConfigureRequest(tmp_path, tmp_path, {}, ("agent-session",)),
+        "configure": ConfigureRequest(tmp_path, tmp_path, {}, ("git-harness",)),
     }
     for method, request in requests.items():
         result = getattr(adapter, method)(request)
@@ -130,7 +130,7 @@ def test_unverified_native_adapters_fail_explicitly(name, tmp_path):
 def test_resources_are_package_relative_without_claiming_functionality(name, resource):
     assert (
         "Reserved"
-        in resources.files(f"agent_session.harnesses.{name}").joinpath(resource).read_text()
+        in resources.files(f"git_harness.harnesses.{name}").joinpath(resource).read_text()
     )
 
 
@@ -165,9 +165,9 @@ def test_portable_tool_image_summary_values_have_explicit_content_types():
 def test_source_layout_and_no_concrete_imports_in_core():
     import ast
 
-    import agent_session
+    import git_harness
 
-    root = Path(agent_session.__file__).parent
+    root = Path(git_harness.__file__).parent
     assert set(COMMANDS) == {
         "config",
         "prime",

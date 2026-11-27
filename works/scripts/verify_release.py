@@ -10,8 +10,6 @@ from urllib.error import HTTPError
 from urllib.parse import quote
 from urllib.request import Request, urlopen
 
-PUBLICATION_NAME_APPROVED = False  # Occupied PyPI name; owner-approved change is pending.
-
 
 def release_identity(event: str, ref: str, sha: str, version: str) -> bool:
     if not re.fullmatch(r"[0-9a-f]{40}", sha):
@@ -30,7 +28,7 @@ def read_json(url: str):
         url,
         headers={
             "Accept": "application/vnd.github+json",
-            "User-Agent": "agent-session-release-check",
+            "User-Agent": "git-harness-release-check",
         },
     )
     with urlopen(request, timeout=20) as response:
@@ -76,16 +74,14 @@ def verify_repository(sha: str, branch: str, *, tagged: bool) -> None:
 def main():
     project = tomllib.loads(Path("pyproject.toml").read_text())["project"]
     version = project["version"]
-    if project["name"] != "agent-session":
+    if project["name"] != "git-harness":
         raise ValueError("distribution name changed; owner review is required")
     sha = os.environ["GITHUB_SHA"]
     tagged = release_identity(
         os.environ["GITHUB_EVENT_NAME"], os.environ["GITHUB_REF"], sha, version
     )
-    if tagged and not PUBLICATION_NAME_APPROVED:
-        raise ValueError("publication is blocked pending the owner-approved distribution name")
     repository = os.environ["GITHUB_REPOSITORY"]
-    if repository != "neprel/agent-session":
+    if repository != "neprel/git-harness":
         raise ValueError("release repository does not match the owner configuration")
     branch = os.environ["DEFAULT_BRANCH"]
     verify_repository(sha, branch, tagged=tagged)
@@ -97,7 +93,7 @@ def main():
             read_json(f"{api}/environments/pypi/deployment-branch-policies"),
         )
         try:
-            read_json(f"https://pypi.org/pypi/agent-session/{version}/json")
+            read_json(f"https://pypi.org/pypi/git-harness/{version}/json")
         except HTTPError as exc:
             if exc.code != 404:
                 raise

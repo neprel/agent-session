@@ -1,11 +1,11 @@
 {
-  "name": "agent-session-native-codex",
+  "name": "git-harness-native-codex",
   "version": "0.0.0",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
-      "name": "agent-session-native-codex",
+      "name": "git-harness-native-codex",
       "version": "0.0.0",
       "dependencies": {
         "@openai/codex": "0.144.4"

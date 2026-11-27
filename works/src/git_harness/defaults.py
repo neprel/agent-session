@@ -3,7 +3,7 @@
 from collections.abc import Mapping
 from dataclasses import dataclass
 
-from .errors import AgentSessionError, ExitCode
+from .errors import ExitCode, GitHarnessError
 from .validation import component, size_bytes
 
 
@@ -23,7 +23,7 @@ class Defaults:
     max_wait: str = "60s"
     check_interval: str = "30s"
     unavailable_timeout: str = "10m"
-    session_dir: str = ".session"
+    session_dir: str = ".harness"
     session_file: str = "agent.json"
     history_max_size: str = "256K"
     max_changes: int = 50
@@ -53,11 +53,9 @@ class Environment:
     def from_environ(cls, environ: Mapping[str, str]) -> "Environment":
         try:
             return cls(
-                component(environ.get("AGENT_SESSION_DIR", DEFAULTS.session_dir)),
-                component(environ.get("AGENT_SESSION_FILE", DEFAULTS.session_file)),
-                size_bytes(
-                    environ.get("AGENT_SESSION_HISTORY_MAX_SIZE", DEFAULTS.history_max_size)
-                ),
+                component(environ.get("GIT_HARNESS_DIR", DEFAULTS.session_dir)),
+                component(environ.get("GIT_HARNESS_FILE", DEFAULTS.session_file)),
+                size_bytes(environ.get("GIT_HARNESS_HISTORY_MAX_SIZE", DEFAULTS.history_max_size)),
             )
         except ValueError as exc:
-            raise AgentSessionError("invalid_environment", str(exc), ExitCode.INVALID) from exc
+            raise GitHarnessError("invalid_environment", str(exc), ExitCode.INVALID) from exc

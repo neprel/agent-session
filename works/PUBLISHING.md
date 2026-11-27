@@ -1,11 +1,12 @@
 # Owner publishing guide
 
-Publication is blocked. The configured PyPI name `agent-session` is already
-owned by another account; the manager recorded primary-source evidence in
-`../probes/AS-018/pypi-name-check.json`. A distribution-name proposal requires
-owner approval before package metadata or final publisher settings change.
-Do not create a publisher for the occupied name. No package, tag, release,
-merge or account-setting change is authorized by these instructions alone.
+The owner approved the Git Harness name: PyPI distribution and executable
+`git-harness`, Python package `git_harness`, repository `neprel/git-harness`.
+The manager verified the repository rename preserves its identity and history.
+The PyPI project endpoint returned HTTP 404 on 2026-11-27; this does not reserve
+the name. Publication remains blocked by incomplete native acceptance and owner
+release settings. No package, tag, release, merge or account-setting change is
+authorized by these instructions alone.
 
 ## Workflow behavior
 
@@ -48,12 +49,11 @@ dependency. All external actions are pinned to reviewed complete commit SHAs;
 uv is fixed at 0.13.0 with checksum enforcement. actionlint 1.7.12 is downloaded
 with a fixed archive checksum. Native versions/locks remain repository-only.
 
-## Owner setup after name approval and release-candidate acceptance
+## Owner setup after release-candidate acceptance
 
-Confirm `neprel/agent-session` is still the intended public repository and that
+Confirm `neprel/git-harness` is still the intended public repository and that
 the approved distribution name, import name and executable match the approved
-specification. Update the package/publisher fields only through that approved
-change. Protect `main`, require the complete CI gates, restrict workflow/tag
+specification. Protect `main`, require the complete CI gates, restrict workflow/tag
 changes and keep default workflow permissions read-only.
 
 Create the GitHub environment `pypi` with required reviewer `neprel`, admin bypass
@@ -61,8 +61,8 @@ disabled, and custom deployment policy permitting only version tags (`v*`). If
 the owner is the sole reviewer, self-review must remain possible. Do not add a
 PyPI API token. These settings are owner actions; no workflow configures them.
 
-On PyPI, create the Trusted Publisher for the **approved available name** with
-GitHub owner `neprel`, repository `agent-session`, workflow filename `release.yml`
+On PyPI, create the Trusted Publisher for the approved name `git-harness` with
+GitHub owner `neprel`, repository `git-harness`, workflow filename `release.yml`
 and environment `pypi`. A pending publisher does not reserve a name. Resolve any
 collision before publication; never silently rename or use another account's
 project. Account setup and publication require separate explicit owner approval.

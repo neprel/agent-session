@@ -9,7 +9,7 @@ from pathlib import Path
 from . import __version__
 from .commands import COMMANDS
 from .defaults import DEFAULTS, Environment
-from .errors import AgentSessionError, ExitCode
+from .errors import ExitCode, GitHarnessError
 from .harnesses import HARNESSES
 from .validation import duration, endpoint_url, nonempty
 
@@ -17,7 +17,7 @@ TARGET_COMMANDS = frozenset({"init", "check", "run", "stop", "sync", "message", 
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="agent-session", allow_abbrev=False)
+    parser = argparse.ArgumentParser(prog="git-harness", allow_abbrev=False)
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     subparsers = parser.add_subparsers(dest="command")
     for name, command in COMMANDS.items():
@@ -87,7 +87,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         return args._implementation.execute(args)
     except SystemExit as exc:
         return int(exc.code)
-    except AgentSessionError as exc:
+    except GitHarnessError as exc:
         print(f"{exc.code}: {exc}", file=sys.stderr)
         return exc.exit_code
     except OSError:

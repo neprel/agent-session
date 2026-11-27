@@ -175,7 +175,7 @@
       "timeout-minutes": 10,
       "environment": {
         "name": "pypi",
-        "url": "https://pypi.org/p/agent-session"
+        "url": "https://pypi.org/p/git-harness"
       },
       "permissions": {
         "id-token": "write"

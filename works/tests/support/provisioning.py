@@ -108,7 +108,7 @@ def install_client(node: Path, destination: Path, client: str, locks: Path) -> d
     (destination / "package.json").write_text(
         json.dumps(
             {
-                "name": f"agent-session-native-{client}",
+                "name": f"git-harness-native-{client}",
                 "version": "0.0.0",
                 "private": True,
                 "dependencies": {package: version},

@@ -1,11 +1,11 @@
 {
-  "name": "agent-session-native-claude",
+  "name": "git-harness-native-claude",
   "version": "0.0.0",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
-      "name": "agent-session-native-claude",
+      "name": "git-harness-native-claude",
       "version": "0.0.0",
       "dependencies": {
         "@anthropic-ai/claude-code": "2.1.209"

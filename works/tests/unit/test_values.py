@@ -2,11 +2,11 @@ import math
 
 import pytest
 
-from agent_session.cli import main
-from agent_session.defaults import DEFAULTS, Environment
-from agent_session.delivery import DeliveryStatus, delivery_exit
-from agent_session.errors import ExitCode
-from agent_session.validation import (
+from git_harness.cli import main
+from git_harness.defaults import DEFAULTS, Environment
+from git_harness.delivery import DeliveryStatus, delivery_exit
+from git_harness.errors import ExitCode
+from git_harness.validation import (
     component,
     cron_expression,
     duration,
@@ -55,8 +55,18 @@ def test_size_invalid(value):
         size_bytes(value)
 
 
+def test_legacy_environment_has_no_effect():
+    assert Environment.from_environ(
+        {
+            "AGENT_SESSION_DIR": "legacy",
+            "AGENT_SESSION_FILE": "old.json",
+            "AGENT_SESSION_HISTORY_MAX_SIZE": "1M",
+        }
+    ) == Environment(".harness", "agent.json", 262144)
+
+
 def test_environment_defaults_and_fixed_policy():
-    assert Environment.from_environ({}) == Environment(".session", "agent.json", 262144)
+    assert Environment.from_environ({}) == Environment(".harness", "agent.json", 262144)
     assert (
         DEFAULTS.max_changes,
         DEFAULTS.pending_watcher_batches,
@@ -73,9 +83,9 @@ def test_environment_defaults_and_fixed_policy():
 @pytest.mark.parametrize(
     "key,value,field,expected",
     [
-        ("AGENT_SESSION_DIR", "custom", "session_dir", "custom"),
-        ("AGENT_SESSION_FILE", "custom.json", "session_file", "custom.json"),
-        ("AGENT_SESSION_HISTORY_MAX_SIZE", "2M", "history_max_size", 2097152),
+        ("GIT_HARNESS_DIR", "custom", "session_dir", "custom"),
+        ("GIT_HARNESS_FILE", "custom.json", "session_file", "custom.json"),
+        ("GIT_HARNESS_HISTORY_MAX_SIZE", "2M", "history_max_size", 2097152),
     ],
 )
 def test_environment_overrides_are_snapshots(key, value, field, expected, monkeypatch):
@@ -88,15 +98,15 @@ def test_environment_overrides_are_snapshots(key, value, field, expected, monkey
 
 
 @pytest.mark.parametrize(
-    "key", ["AGENT_SESSION_DIR", "AGENT_SESSION_FILE", "AGENT_SESSION_HISTORY_MAX_SIZE"]
+    "key", ["GIT_HARNESS_DIR", "GIT_HARNESS_FILE", "GIT_HARNESS_HISTORY_MAX_SIZE"]
 )
 @pytest.mark.parametrize("value", ["", ".", "..", "a/b", "a\\b", "\0"])
 def test_environment_empty_and_invalid_fail_before_execution(key, value, monkeypatch, capsys):
     # NUL cannot be put into an OS environment; still validate direct input.
     if value == "\0":
-        from agent_session.errors import AgentSessionError
+        from git_harness.errors import GitHarnessError
 
-        with pytest.raises(AgentSessionError):
+        with pytest.raises(GitHarnessError):
             Environment.from_environ({key: value})
     else:
         monkeypatch.setenv(key, value)

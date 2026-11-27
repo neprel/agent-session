@@ -1,11 +1,11 @@
 {
-  "name": "agent-session-native-pi",
+  "name": "git-harness-native-pi",
   "version": "0.0.0",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
-      "name": "agent-session-native-pi",
+      "name": "git-harness-native-pi",
       "version": "0.0.0",
       "dependencies": {
         "@earendil-works/pi-coding-agent": "0.80.6"

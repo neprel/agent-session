@@ -94,7 +94,7 @@ def test_clock_rollback_does_not_change_monotonic_deadline(fake_clock):
 
 
 def test_reusable_fake_adapter_is_independent(fake_harness, workspace):
-    from agent_session.harnesses.base import DiscoverRequest, Harness
+    from git_harness.harnesses.base import DiscoverRequest, Harness
 
     assert isinstance(fake_harness, Harness)
     assert fake_harness.discover(DiscoverRequest(workspace.work, {})).session.harness == "fake"

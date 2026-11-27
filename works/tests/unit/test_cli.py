@@ -2,12 +2,12 @@ import argparse
 
 import pytest
 
-from agent_session import __version__
-from agent_session.cli import build_parser, main
-from agent_session.commands import COMMANDS
-from agent_session.commands.base import Command
-from agent_session.defaults import DEFAULTS
-from agent_session.errors import AgentSessionError, ExitCode
+from git_harness import __version__
+from git_harness.cli import build_parser, main
+from git_harness.commands import COMMANDS
+from git_harness.commands.base import Command
+from git_harness.defaults import DEFAULTS
+from git_harness.errors import ExitCode, GitHarnessError
 
 pytestmark = pytest.mark.unit
 
@@ -30,7 +30,7 @@ def test_every_command_help_and_explicit_unsupported(name, options, capsys):
     assert isinstance(COMMANDS[name], Command)
     assert main([name, "--help"]) == 0
     help_text = capsys.readouterr().out
-    assert f"agent-session {name}" in help_text
+    assert f"git-harness {name}" in help_text
     assert "--verbose" in help_text and "--quiet" in help_text
     if name not in {"config", "prime"}:
         assert "--target" in help_text and "(default: .)" in help_text
@@ -48,7 +48,7 @@ def test_root_help_version_and_no_command(capsys):
     assert main(["--help"]) == 0
     assert "timer" in capsys.readouterr().out
     assert main(["--version"]) == 0
-    assert capsys.readouterr().out.strip() == f"agent-session {__version__}"
+    assert capsys.readouterr().out.strip() == f"git-harness {__version__}"
 
 
 @pytest.mark.parametrize("name,options", MINIMAL.items())
@@ -342,7 +342,7 @@ class FakeCommand:
         parser.add_argument("--answer", type=int, default=17)
 
     def execute(self, args: argparse.Namespace) -> int:
-        assert args.environment.session_dir == ".session"
+        assert args.environment.session_dir == ".harness"
         return args.answer
 
 
@@ -356,8 +356,8 @@ def test_fake_command_uses_unchanged_dispatch(monkeypatch):
 @pytest.mark.parametrize(
     "error,expected",
     [
-        (AgentSessionError("conflict", "owner changed", ExitCode.CONFLICT), 6),
-        (AgentSessionError("failure", "cannot complete"), 1),
+        (GitHarnessError("conflict", "owner changed", ExitCode.CONFLICT), 6),
+        (GitHarnessError("failure", "cannot complete"), 1),
         (OSError("do not expose internal details"), 1),
     ],
 )

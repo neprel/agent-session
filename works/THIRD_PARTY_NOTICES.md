@@ -1,6 +1,6 @@
 # Third-party notices
 
-The event and provenance structure in `src/agent_session/history.py` adapts
+The event and provenance structure in `src/git_harness/history.py` adapts
 `src/session_migrate/model.py` from xhluca/session-migrate, revision
 `fefb719088dc0157b16f071065daa30434a0b980`:
 https://github.com/xhluca/session-migrate/tree/fefb719088dc0157b16f071065daa30434a0b980

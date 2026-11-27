@@ -1,4 +1,4 @@
-# agent-session
+# Git Harness
 
 Deterministic CLI for local coding agent sessions. Product development runs
 from this `works/` directory; project specifications and task records live in
@@ -13,30 +13,35 @@ reserved placeholders and do not install working integrations.
 
 ```sh
 uv sync --locked --dev
-uv run --locked agent-session --help
-uv run --locked python -m agent_session watcher --help
+uv run --locked git-harness --help
+uv run --locked python -m git_harness watcher --help
 uv run --locked pytest
 uv run --locked ruff check src tests scripts
 uv build
 uv run --locked python scripts/verify_distribution.py
-uvx --from ./dist/agent_session-0.1.0-py3-none-any.whl agent-session --version
+uvx --from ./dist/git_harness-0.1.0-py3-none-any.whl git-harness --version
 ```
+
+Installing `git-harness` also enables native `git harness` through Git's external
+command discovery. Both forms work outside a Git repository. No Git alias or
+additional wrapper is installed. For example, after `uv tool install git-harness`,
+run `git-harness --version` or `git harness --version`.
 
 Python 3.11 or newer is required. The runtime dependencies are watchdog,
 croniter, unique-namer and psutil; there is no model SDK or inference dependency.
 Tests, coverage and lint tools are development dependencies only. No publication
 is authorized by a local build.
 
-Run `agent-session COMMAND --help` for each command's options and defaults.
+Run `git-harness COMMAND --help` for each command's options and defaults.
 Target commands default to `--target .` and a `15s` operation budget, except
 `stop` which defaults to `5s`. `config` and `prime` reject target options.
 `--verbose` and `--quiet` conflict. Durations require ms, s, m or h; only
 `--unavailable-timeout` accepts zero and `never`. Watcher paths are required;
 timers require exactly one interval or five-field cron expression.
 
-The only package-defined public environment settings are `AGENT_SESSION_DIR`
-(`.session`), `AGENT_SESSION_FILE` (`agent.json`) and
-`AGENT_SESSION_HISTORY_MAX_SIZE` (`256K`, 262144 bytes). Empty/invalid settings
+The only package-defined public environment settings are `GIT_HARNESS_DIR`
+(`.harness`), `GIT_HARNESS_FILE` (`agent.json`) and
+`GIT_HARNESS_HISTORY_MAX_SIZE` (`256K`, 262144 bytes). Empty/invalid settings
 fail with exit 2. Names must be single components; history sizes are positive
 integer bytes or K/M binary units. Values are snapshotted at CLI startup.
 Native discovery defaults are intentionally unresolved until execution has

@@ -7,7 +7,7 @@ Paths below are relative to `works/`. Run development commands here.
 separate module and is listed in `commands/__init__.py:COMMANDS`. The CLI owns
 common target/verbosity options; `options.py` holds shared worker declarations.
 Command-specific parameters stay in their owning command. No concrete harness
-is imported into the CLI or commands. Errors use `AgentSessionError` and the
+is imported into the CLI or commands. Errors use `GitHarnessError` and the
 shared `ExitCode`; parser errors are exit 2. An unimplemented operation returns
 an explicit unsupported error, never a success.
 

@@ -1,11 +1,11 @@
 {
-  "name": "agent-session-native-opencode",
+  "name": "git-harness-native-opencode",
   "version": "0.0.0",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
-      "name": "agent-session-native-opencode",
+      "name": "git-harness-native-opencode",
       "version": "0.0.0",
       "dependencies": {
         "@opencode/cli": "2.0.23"

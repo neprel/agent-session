@@ -1,7 +1,7 @@
 """Reusable stateful fake Harness; no native protocol or process access."""
 
-from agent_session.delivery import DeliveryResult, DeliveryStatus
-from agent_session.harnesses.base import (
+from git_harness.delivery import DeliveryResult, DeliveryStatus
+from git_harness.harnesses.base import (
     Activity,
     Capabilities,
     Capability,
@@ -21,10 +21,10 @@ from agent_session.harnesses.base import (
     WriteHistoryRequest,
     WriteHistoryResult,
 )
-from agent_session.history import (
+from git_harness.history import (
     NativeCursor,
 )
-from agent_session.session import NativeSession
+from git_harness.session import NativeSession
 
 
 class FakeHarness:

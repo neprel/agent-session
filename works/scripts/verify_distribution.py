@@ -26,7 +26,9 @@ def main():
     package_version_text = tomllib.loads((product / "pyproject.toml").read_text())["project"][
         "version"
     ]
-    assert uv is not None
+    uvx = shutil.which("uvx")
+    git = shutil.which("git")
+    assert uv is not None and uvx is not None and git is not None
     (wheel,) = (product / "dist").glob("*.whl")
     (sdist,) = (product / "dist").glob("*.tar.gz")
     with zipfile.ZipFile(wheel) as archive:
@@ -45,7 +47,7 @@ def main():
             "pytest" not in r and "coverage" not in r and "ruff" not in r for r in requirements
         )
         for resource in ("opencode/plugin.ts", "pi/extension.ts"):
-            assert f"agent_session/harnesses/{resource}" in names
+            assert f"git_harness/harnesses/{resource}" in names
         assert not any(n.endswith(("hooks.json", "settings.json")) for n in names)
         notice = archive.read(
             next(n for n in names if n.endswith("/THIRD_PARTY_NOTICES.md"))
@@ -58,13 +60,29 @@ def main():
         assert any(n.endswith("/uv.lock") for n in names)
         assert not any("/tests/" in n or "/scripts/" in n for n in names)
         assert not any("/tasks/" in n or "/probes/" in n for n in names)
-    with tempfile.TemporaryDirectory(prefix="agent-session-AS-017-dist-") as temporary:
+    with tempfile.TemporaryDirectory(prefix="git-harness-AS-017-dist-") as temporary:
         root = Path(temporary)
         env = {"HOME": str(root / "home"), "PATH": "/usr/bin:/bin", "TERM": "dumb"}
         # A clean HOME prevents uv config inheritance. Dependency caches are
         # installation input, not native harness state.
         env["UV_CACHE_DIR"] = str(Path(os.environ.get("UV_CACHE_DIR", Path.home() / ".cache/uv")))
+        env.update(
+            GIT_CONFIG_NOSYSTEM="1",
+            GIT_CONFIG_GLOBAL=os.devnull,
+            UV_TOOL_DIR=str(root / "tools"),
+            UV_TOOL_BIN_DIR=str(root / "tool-bin"),
+        )
         Path(env["HOME"]).mkdir()
+        assert (
+            subprocess.run(
+                [git, "rev-parse", "--is-inside-work-tree"],
+                cwd=root,
+                env=env,
+                capture_output=True,
+                timeout=10,
+            ).returncode
+            != 0
+        )
         commands = []
 
         def run(arguments):
@@ -75,14 +93,22 @@ def main():
             commands.append({"argv": [str(a) for a in arguments], "exit": result.returncode})
             return result.stdout
 
+        def check_commands(bin_dir):
+            env["PATH"] = f"{bin_dir}{os.pathsep}/usr/bin:/bin"
+            assert not (root / ".git").exists()
+            expected = f"git-harness {package_version_text}"
+            assert run([str(bin_dir / "git-harness"), "--version"]).strip() == expected
+            assert run([git, "harness", "--version"]).strip() == expected
+            assert "watcher" in run([git, "harness", "-h"])
+            assert not (bin_dir / "agent-session").exists()
+
         for label, artifact in (("wheel", wheel), ("sdist", sdist)):
             venv = root / label
             run([uv, "--no-config", "venv", "--python", sys.executable, str(venv)])
             python = venv / "bin/python"
             run([uv, "--no-config", "pip", "install", "--python", str(python), str(artifact)])
-            version = run([str(venv / "bin/agent-session"), "--version"])
-            assert f"agent-session {package_version_text}" in version
-            assert "watcher" in run([str(python), "-m", "agent_session", "--help"])
+            check_commands(venv / "bin")
+            assert "watcher" in run([str(python), "-m", "git_harness", "--help"])
             # The fake command/harness test uses only installed package APIs.
             # It cannot import the source checkout or rely on pytest.
             run(
@@ -92,19 +118,24 @@ def main():
                     "\n".join(
                         [
                             "from pathlib import Path",
-                            "from importlib import resources",
-                            "import agent_session",
-                            "from agent_session.cli import main",
-                            "from agent_session.commands import COMMANDS",
-                            "from agent_session.harnesses import HARNESSES",
-                            "from agent_session.harnesses.base import ("
+                            "from importlib import resources, metadata, util",
+                            "assert util.find_spec('agent_session') is None",
+                            "scripts = metadata.distribution('git-harness').entry_points",
+                            "assert [(s.name, s.value) for s in scripts "
+                            "if s.group == 'console_scripts'] == "
+                            "[('git-harness', 'git_harness.cli:main')]",
+                            "import git_harness",
+                            "from git_harness.cli import main",
+                            "from git_harness.commands import COMMANDS",
+                            "from git_harness.harnesses import HARNESSES",
+                            "from git_harness.harnesses.base import ("
                             "Harness, Unsupported, DiscoverRequest)",
-                            "assert 'site-packages' in agent_session.__file__",
+                            "assert 'site-packages' in git_harness.__file__",
                             "assert all(isinstance(a, Harness) for a in HARNESSES.values())",
                             "discovered = HARNESSES['codex'].discover("
                             "DiscoverRequest(Path.cwd(), {}))",
                             "assert isinstance(discovered, Unsupported)",
-                            "assert resources.files('agent_session.harnesses.pi')"
+                            "assert resources.files('git_harness.harnesses.pi')"
                             ".joinpath('extension.ts').is_file()",
                             "class FakeCommand:",
                             " name='installed-fake'; description='installed test'",
@@ -143,18 +174,18 @@ def main():
             )
         version = run(
             [
-                uv,
+                uvx,
                 "--no-config",
-                "tool",
-                "run",
                 "--isolated",
                 "--from",
                 str(wheel),
-                "agent-session",
+                "git-harness",
                 "--version",
             ]
         )
-        assert f"agent-session {package_version_text}" in version
+        assert f"git-harness {package_version_text}" in version
+        run([uv, "--no-config", "tool", "install", "--python", sys.executable, str(wheel)])
+        check_commands(root / "tool-bin")
         print(
             json.dumps(
                 {"artifacts": [wheel.name, sdist.name], "checks": len(commands), "result": "passed"}
