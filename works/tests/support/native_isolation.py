@@ -16,7 +16,9 @@ class IsolationUnavailable(RuntimeError):
     pass
 
 
-def confinement_command(platform: str, command: list[str], tools: dict[str, str]) -> list[str]:
+def confinement_command(
+    platform: str, command: list[str], tools: dict[str, str], *, linux_sudo=False
+) -> list[str]:
     if platform == "darwin" and tools.get("sandbox-exec"):
         profile = (
             "(version 1) (allow default) (deny network*) "
@@ -26,6 +28,22 @@ def confinement_command(platform: str, command: list[str], tools: dict[str, str]
         )
         return [tools["sandbox-exec"], "-p", profile, *command]
     if platform == "linux" and tools.get("unshare"):
+        if linux_sudo:
+            if not tools.get("sudo"):
+                raise IsolationUnavailable("non-interactive sudo is required for hosted namespaces")
+            return [
+                tools["sudo"],
+                "--non-interactive",
+                "--",
+                tools["unshare"],
+                "--net",
+                "--pid",
+                "--fork",
+                "--kill-child",
+                "--mount-proc",
+                "--",
+                *command,
+            ]
         return [
             tools["unshare"],
             "--user",

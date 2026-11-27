@@ -12,6 +12,7 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+import tomllib
 import zipfile
 from email.parser import Parser
 from importlib.metadata import version as package_version
@@ -22,6 +23,9 @@ def main():
     product = Path(__file__).resolve().parents[2] / "works"
     assert Path.cwd() == product, "Run from works/"
     uv = shutil.which("uv")
+    package_version_text = tomllib.loads((product / "pyproject.toml").read_text())["project"][
+        "version"
+    ]
     assert uv is not None
     (wheel,) = (product / "dist").glob("*.whl")
     (sdist,) = (product / "dist").glob("*.tar.gz")
@@ -77,7 +81,7 @@ def main():
             python = venv / "bin/python"
             run([uv, "--no-config", "pip", "install", "--python", str(python), str(artifact)])
             version = run([str(venv / "bin/agent-session"), "--version"])
-            assert "agent-session 0.1.0" in version
+            assert f"agent-session {package_version_text}" in version
             assert "watcher" in run([str(python), "-m", "agent_session", "--help"])
             # The fake command/harness test uses only installed package APIs.
             # It cannot import the source checkout or rely on pytest.
@@ -150,7 +154,7 @@ def main():
                 "--version",
             ]
         )
-        assert "agent-session 0.1.0" in version
+        assert f"agent-session {package_version_text}" in version
         print(
             json.dumps(
                 {"artifacts": [wheel.name, sdist.name], "checks": len(commands), "result": "passed"}
